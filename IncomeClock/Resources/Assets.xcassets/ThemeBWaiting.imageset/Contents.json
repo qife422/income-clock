@@ -1,0 +1,9 @@
+{
+  "images" : [
+    { "filename" : "waiting-light@2x.png", "idiom" : "universal", "scale" : "2x" },
+    { "filename" : "waiting-light@3x.png", "idiom" : "universal", "scale" : "3x" },
+    { "appearances" : [{ "appearance" : "luminosity", "value" : "dark" }], "filename" : "waiting-dark@2x.png", "idiom" : "universal", "scale" : "2x" },
+    { "appearances" : [{ "appearance" : "luminosity", "value" : "dark" }], "filename" : "waiting-dark@3x.png", "idiom" : "universal", "scale" : "3x" }
+  ],
+  "info" : { "author" : "xcode", "version" : 1 }
+}

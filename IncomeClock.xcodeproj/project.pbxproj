@@ -1,0 +1,997 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE9000010000000000000002 /* SettingsInteractionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000001 /* SettingsInteractionTests.swift */; };
+		CE9000020000000000000002 /* PanelCloseoutIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000020000000000000001 /* PanelCloseoutIntegrationTests.swift */; };
+		AA0000010000000000000101 /* IncomeClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000001 /* IncomeClockApp.swift */; };
+		AA0000010000000000000102 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000002 /* AppDelegate.swift */; };
+		AA0000010000000000000103 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000003 /* AppEnvironment.swift */; };
+		AA0000010000000000000104 /* MenuBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000004 /* MenuBarContentView.swift */; };
+		AA0000010000000000000105 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000005 /* PanelController.swift */; };
+		AA0000010000000000000106 /* EmptyPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000006 /* EmptyPanelView.swift */; };
+		AA0000010000000000000107 /* EmptySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000007 /* EmptySettingsView.swift */; };
+		AA0000010000000000000108 /* DomainValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000010 /* DomainValues.swift */; };
+		AA0000010000000000000109 /* Workday.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000011 /* Workday.swift */; };
+		AA0000010000000000000110 /* EarningsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000012 /* EarningsCalculator.swift */; };
+		AA0000010000000000000111 /* WorkdayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000013 /* WorkdayState.swift */; };
+		AA0000010000000000000112 /* StateDeriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000014 /* StateDeriver.swift */; };
+		AA0000010000000000000113 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000015 /* Clock.swift */; };
+		AA0000010000000000000114 /* DomainTestFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000016 /* DomainTestFixtures.swift */; };
+		AA0000010000000000000115 /* DomainValuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000017 /* DomainValuesTests.swift */; };
+		AA0000010000000000000116 /* EarningsCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000018 /* EarningsCalculatorTests.swift */; };
+		AA0000010000000000000117 /* StateDeriverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000019 /* StateDeriverTests.swift */; };
+		AA0000010000000000000118 /* ClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000020 /* ClockTests.swift */; };
+		AA0000010000000000000119 /* PersistenceRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000022 /* PersistenceRecords.swift */; };
+		AA0000010000000000000120 /* RecordRecovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000023 /* RecordRecovery.swift */; };
+		AA0000010000000000000121 /* RecordMigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000024 /* RecordMigration.swift */; };
+		AA0000010000000000000122 /* RecordFileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000025 /* RecordFileStore.swift */; };
+		AA0000010000000000000123 /* RecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000026 /* RecordRepository.swift */; };
+		AA0000010000000000000124 /* PersistenceTestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000027 /* PersistenceTestSupport.swift */; };
+		AA0000010000000000000125 /* PersistenceRecordsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000028 /* PersistenceRecordsTests.swift */; };
+		AA0000010000000000000126 /* RecordMigrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000029 /* RecordMigrationTests.swift */; };
+		AA0000010000000000000127 /* RecordRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000030 /* RecordRepositoryTests.swift */; };
+		AA0000010000000000000128 /* BusinessStoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000032 /* BusinessStoreModels.swift */; };
+		AA0000010000000000000129 /* BusinessWorkdayCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000033 /* BusinessWorkdayCalendar.swift */; };
+		AA0000010000000000000130 /* BusinessStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000034 /* BusinessStore.swift */; };
+		AA0000010000000000000131 /* ApplicationTestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000035 /* ApplicationTestSupport.swift */; };
+		AA0000010000000000000132 /* BusinessStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000036 /* BusinessStoreTests.swift */; };
+		AA0000010000000000000133 /* BusinessStoreIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000037 /* BusinessStoreIntegrationTests.swift */; };
+		AA0000010000000000000134 /* PanelPresentationProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000039 /* PanelPresentationProfile.swift */; };
+		AA0000010000000000000135 /* PanelPlacementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000040 /* PanelPlacementController.swift */; };
+		AA0000010000000000000136 /* PanelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000041 /* PanelTests.swift */; };
+		AA0000010000000000000137 /* PanelSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000042 /* PanelSettingsCoordinator.swift */; };
+		AA0000010000000000000138 /* ShortcutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000043 /* ShortcutUITests.swift */; };
+		AA0000010000000000000139 /* Stage6ServiceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000045 /* Stage6ServiceModels.swift */; };
+		AA0000010000000000000140 /* LoginItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000046 /* LoginItemController.swift */; };
+		AA0000010000000000000141 /* UNUserNotificationCenterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000047 /* UNUserNotificationCenterService.swift */; };
+		AA0000010000000000000142 /* SMAppServiceLoginItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000048 /* SMAppServiceLoginItemService.swift */; };
+		AA0000010000000000000143 /* Stage6ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000049 /* Stage6ServiceTests.swift */; };
+		AA0000010000000000000144 /* ThemeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000050 /* ThemeModels.swift */; };
+		AA0000010000000000000145 /* ThemeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000051 /* ThemeStore.swift */; };
+		AA0000010000000000000146 /* BundledThemeCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000052 /* BundledThemeCatalog.swift */; };
+		AA0000010000000000000147 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000053 /* Assets.xcassets */; };
+		AA0000010000000000000148 /* BuiltinThemes in Resources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000054 /* BuiltinThemes */; };
+		AA0000010000000000000149 /* ThemeStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000055 /* ThemeStoreTests.swift */; };
+		AA0000010000000000000150 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000010000000000000902 /* ZIPFoundation */; };
+		AA0000010000000000000151 /* ThemeImportModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000056 /* ThemeImportModels.swift */; };
+		AA0000010000000000000152 /* ThemePackageValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000057 /* ThemePackageValidation.swift */; };
+		AA0000010000000000000153 /* ThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000058 /* ThemeRepository.swift */; };
+		AA0000010000000000000154 /* Stage8ThemeImportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000059 /* Stage8ThemeImportTests.swift */; };
+		AA0000010000000000000155 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000010000000000000902 /* ZIPFoundation */; };
+		AA0000010000000000000156 /* THIRD_PARTY_NOTICES.txt in Resources */ = {isa = PBXBuildFile; fileRef = AA0000010000000000000061 /* THIRD_PARTY_NOTICES.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA0000010000000000000801 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA0000010000000000000501 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA0000010000000000000401;
+			remoteInfo = IncomeClock;
+		};
+		AA0000010000000000000803 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA0000010000000000000501 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA0000010000000000000401;
+			remoteInfo = IncomeClock;
+		};
+		AA0000010000000000000805 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA0000010000000000000501 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA0000010000000000000401;
+			remoteInfo = IncomeClock;
+		};
+		AA0000010000000000000807 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA0000010000000000000501 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA0000010000000000000401;
+			remoteInfo = IncomeClock;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CE9000010000000000000001 /* SettingsInteractionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractionTests.swift; sourceTree = "<group>"; };
+		CE9000020000000000000001 /* PanelCloseoutIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelCloseoutIntegrationTests.swift; sourceTree = "<group>"; };
+		AA0000010000000000000001 /* IncomeClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeClockApp.swift; sourceTree = "<group>"; };
+		AA0000010000000000000002 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AA0000010000000000000003 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		AA0000010000000000000004 /* MenuBarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContentView.swift; sourceTree = "<group>"; };
+		AA0000010000000000000005 /* PanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelController.swift; sourceTree = "<group>"; };
+		AA0000010000000000000006 /* EmptyPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPanelView.swift; sourceTree = "<group>"; };
+		AA0000010000000000000007 /* EmptySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySettingsView.swift; sourceTree = "<group>"; };
+		AA0000010000000000000008 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA0000010000000000000009 /* IncomeClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IncomeClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0000010000000000000010 /* DomainValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainValues.swift; sourceTree = "<group>"; };
+		AA0000010000000000000011 /* Workday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workday.swift; sourceTree = "<group>"; };
+		AA0000010000000000000012 /* EarningsCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsCalculator.swift; sourceTree = "<group>"; };
+		AA0000010000000000000013 /* WorkdayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayState.swift; sourceTree = "<group>"; };
+		AA0000010000000000000014 /* StateDeriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateDeriver.swift; sourceTree = "<group>"; };
+		AA0000010000000000000015 /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		AA0000010000000000000016 /* DomainTestFixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTestFixtures.swift; sourceTree = "<group>"; };
+		AA0000010000000000000017 /* DomainValuesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainValuesTests.swift; sourceTree = "<group>"; };
+		AA0000010000000000000018 /* EarningsCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsCalculatorTests.swift; sourceTree = "<group>"; };
+		AA0000010000000000000019 /* StateDeriverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateDeriverTests.swift; sourceTree = "<group>"; };
+		AA0000010000000000000020 /* ClockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTests.swift; sourceTree = "<group>"; };
+		AA0000010000000000000021 /* IncomeClockDomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IncomeClockDomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0000010000000000000022 /* PersistenceRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceRecords.swift; sourceTree = "<group>"; };
+		AA0000010000000000000023 /* RecordRecovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRecovery.swift; sourceTree = "<group>"; };
+		AA0000010000000000000024 /* RecordMigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMigration.swift; sourceTree = "<group>"; };
+		AA0000010000000000000025 /* RecordFileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFileStore.swift; sourceTree = "<group>"; };
+		AA0000010000000000000026 /* RecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRepository.swift; sourceTree = "<group>"; };
+		AA0000010000000000000027 /* PersistenceTestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTestSupport.swift; sourceTree = "<group>"; };
+		AA0000010000000000000028 /* PersistenceRecordsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceRecordsTests.swift; sourceTree = "<group>"; };
+		AA0000010000000000000029 /* RecordMigrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMigrationTests.swift; sourceTree = "<group>"; };
+		AA0000010000000000000030 /* RecordRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRepositoryTests.swift; sourceTree = "<group>"; };
+		AA0000010000000000000031 /* IncomeClockPersistenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IncomeClockPersistenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0000010000000000000032 /* BusinessStoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessStoreModels.swift; sourceTree = "<group>"; };
+		AA0000010000000000000033 /* BusinessWorkdayCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessWorkdayCalendar.swift; sourceTree = "<group>"; };
+		AA0000010000000000000034 /* BusinessStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessStore.swift; sourceTree = "<group>"; };
+		AA0000010000000000000035 /* ApplicationTestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationTestSupport.swift; sourceTree = "<group>"; };
+		AA0000010000000000000036 /* BusinessStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessStoreTests.swift; sourceTree = "<group>"; };
+		AA0000010000000000000037 /* BusinessStoreIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessStoreIntegrationTests.swift; sourceTree = "<group>"; };
+		AA0000010000000000000038 /* IncomeClockApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IncomeClockApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0000010000000000000039 /* PanelPresentationProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelPresentationProfile.swift; sourceTree = "<group>"; };
+		AA0000010000000000000040 /* PanelPlacementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelPlacementController.swift; sourceTree = "<group>"; };
+		AA0000010000000000000041 /* PanelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelTests.swift; sourceTree = "<group>"; };
+		AA0000010000000000000042 /* PanelSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelSettingsCoordinator.swift; sourceTree = "<group>"; };
+		AA0000010000000000000043 /* ShortcutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutUITests.swift; sourceTree = "<group>"; };
+		AA0000010000000000000044 /* IncomeClockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IncomeClockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0000010000000000000045 /* Stage6ServiceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage6ServiceModels.swift; sourceTree = "<group>"; };
+		AA0000010000000000000046 /* LoginItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemController.swift; sourceTree = "<group>"; };
+		AA0000010000000000000047 /* UNUserNotificationCenterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenterService.swift; sourceTree = "<group>"; };
+		AA0000010000000000000048 /* SMAppServiceLoginItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMAppServiceLoginItemService.swift; sourceTree = "<group>"; };
+		AA0000010000000000000049 /* Stage6ServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage6ServiceTests.swift; sourceTree = "<group>"; };
+		AA0000010000000000000050 /* ThemeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModels.swift; sourceTree = "<group>"; };
+		AA0000010000000000000051 /* ThemeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeStore.swift; sourceTree = "<group>"; };
+		AA0000010000000000000052 /* BundledThemeCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundledThemeCatalog.swift; sourceTree = "<group>"; };
+		AA0000010000000000000053 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA0000010000000000000054 /* BuiltinThemes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BuiltinThemes; sourceTree = "<group>"; };
+		AA0000010000000000000055 /* ThemeStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeStoreTests.swift; sourceTree = "<group>"; };
+		AA0000010000000000000056 /* ThemeImportModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImportModels.swift; sourceTree = "<group>"; };
+		AA0000010000000000000057 /* ThemePackageValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePackageValidation.swift; sourceTree = "<group>"; };
+		AA0000010000000000000058 /* ThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRepository.swift; sourceTree = "<group>"; };
+		AA0000010000000000000059 /* Stage8ThemeImportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage8ThemeImportTests.swift; sourceTree = "<group>"; };
+		AA0000010000000000000060 /* IncomeClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IncomeClock.entitlements; sourceTree = "<group>"; };
+		AA0000010000000000000061 /* THIRD_PARTY_NOTICES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = THIRD_PARTY_NOTICES.txt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA0000010000000000000201 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0000010000000000000150 /* ZIPFoundation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000010000000000000205 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000010000000000000208 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000010000000000000210 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0000010000000000000155 /* ZIPFoundation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000010000000000000214 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA0000010000000000000300 = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000301 /* IncomeClock */,
+				AA0000010000000000000311 /* IncomeClockDomainTests */,
+				AA0000010000000000000314 /* IncomeClockPersistenceTests */,
+				AA0000010000000000000316 /* IncomeClockApplicationTests */,
+				AA0000010000000000000317 /* IncomeClockUITests */,
+				AA0000010000000000000309 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000301 /* IncomeClock */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000302 /* App */,
+				AA0000010000000000000315 /* Application */,
+				AA0000010000000000000310 /* Domain */,
+				AA0000010000000000000312 /* Infrastructure */,
+				AA0000010000000000000303 /* Presentation */,
+				AA0000010000000000000308 /* Resources */,
+			);
+			path = IncomeClock;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000302 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000001 /* IncomeClockApp.swift */,
+				AA0000010000000000000002 /* AppDelegate.swift */,
+				AA0000010000000000000003 /* AppEnvironment.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000303 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000304 /* MenuBar */,
+				AA0000010000000000000305 /* Panel */,
+				AA0000010000000000000306 /* Settings */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000304 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000004 /* MenuBarContentView.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000305 /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000039 /* PanelPresentationProfile.swift */,
+				AA0000010000000000000040 /* PanelPlacementController.swift */,
+				AA0000010000000000000042 /* PanelSettingsCoordinator.swift */,
+				AA0000010000000000000005 /* PanelController.swift */,
+				AA0000010000000000000006 /* EmptyPanelView.swift */,
+			);
+			path = Panel;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000306 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000007 /* EmptySettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000308 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000008 /* Info.plist */,
+				AA0000010000000000000060 /* IncomeClock.entitlements */,
+				AA0000010000000000000053 /* Assets.xcassets */,
+				AA0000010000000000000054 /* BuiltinThemes */,
+				AA0000010000000000000061 /* THIRD_PARTY_NOTICES.txt */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000309 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000009 /* IncomeClock.app */,
+				AA0000010000000000000021 /* IncomeClockDomainTests.xctest */,
+				AA0000010000000000000031 /* IncomeClockPersistenceTests.xctest */,
+				AA0000010000000000000038 /* IncomeClockApplicationTests.xctest */,
+				AA0000010000000000000044 /* IncomeClockUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000310 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000010 /* DomainValues.swift */,
+				AA0000010000000000000011 /* Workday.swift */,
+				AA0000010000000000000012 /* EarningsCalculator.swift */,
+				AA0000010000000000000013 /* WorkdayState.swift */,
+				AA0000010000000000000014 /* StateDeriver.swift */,
+				AA0000010000000000000015 /* Clock.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000311 /* IncomeClockDomainTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000016 /* DomainTestFixtures.swift */,
+				AA0000010000000000000017 /* DomainValuesTests.swift */,
+				AA0000010000000000000018 /* EarningsCalculatorTests.swift */,
+				AA0000010000000000000019 /* StateDeriverTests.swift */,
+				AA0000010000000000000020 /* ClockTests.swift */,
+			);
+			path = IncomeClockDomainTests;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000312 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000313 /* Persistence */,
+				AA0000010000000000000318 /* Notifications */,
+				AA0000010000000000000319 /* LoginItem */,
+				AA0000010000000000000320 /* Theme */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000313 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000022 /* PersistenceRecords.swift */,
+				AA0000010000000000000023 /* RecordRecovery.swift */,
+				AA0000010000000000000024 /* RecordMigration.swift */,
+				AA0000010000000000000025 /* RecordFileStore.swift */,
+				AA0000010000000000000026 /* RecordRepository.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000314 /* IncomeClockPersistenceTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000027 /* PersistenceTestSupport.swift */,
+				AA0000010000000000000028 /* PersistenceRecordsTests.swift */,
+				AA0000010000000000000029 /* RecordMigrationTests.swift */,
+				AA0000010000000000000030 /* RecordRepositoryTests.swift */,
+			);
+			path = IncomeClockPersistenceTests;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000315 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000032 /* BusinessStoreModels.swift */,
+				AA0000010000000000000033 /* BusinessWorkdayCalendar.swift */,
+				AA0000010000000000000034 /* BusinessStore.swift */,
+				AA0000010000000000000045 /* Stage6ServiceModels.swift */,
+				AA0000010000000000000046 /* LoginItemController.swift */,
+				AA0000010000000000000050 /* ThemeModels.swift */,
+				AA0000010000000000000051 /* ThemeStore.swift */,
+				AA0000010000000000000056 /* ThemeImportModels.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000316 /* IncomeClockApplicationTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000035 /* ApplicationTestSupport.swift */,
+				AA0000010000000000000036 /* BusinessStoreTests.swift */,
+				AA0000010000000000000037 /* BusinessStoreIntegrationTests.swift */,
+				AA0000010000000000000041 /* PanelTests.swift */,
+				CE9000010000000000000001 /* SettingsInteractionTests.swift */,
+				CE9000020000000000000001 /* PanelCloseoutIntegrationTests.swift */,
+				AA0000010000000000000049 /* Stage6ServiceTests.swift */,
+				AA0000010000000000000055 /* ThemeStoreTests.swift */,
+				AA0000010000000000000059 /* Stage8ThemeImportTests.swift */,
+			);
+			path = IncomeClockApplicationTests;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000317 /* IncomeClockUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000043 /* ShortcutUITests.swift */,
+			);
+			path = IncomeClockUITests;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000318 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000047 /* UNUserNotificationCenterService.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000319 /* LoginItem */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000048 /* SMAppServiceLoginItemService.swift */,
+			);
+			path = LoginItem;
+			sourceTree = "<group>";
+		};
+		AA0000010000000000000320 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000010000000000000052 /* BundledThemeCatalog.swift */,
+				AA0000010000000000000057 /* ThemePackageValidation.swift */,
+				AA0000010000000000000058 /* ThemeRepository.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA0000010000000000000401 /* IncomeClock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA0000010000000000000702 /* Build configuration list for PBXNativeTarget "IncomeClock" */;
+			buildPhases = (
+				AA0000010000000000000202 /* Sources */,
+				AA0000010000000000000201 /* Frameworks */,
+				AA0000010000000000000203 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IncomeClock;
+			packageProductDependencies = (
+				AA0000010000000000000902 /* ZIPFoundation */,
+			);
+			productName = IncomeClock;
+			productReference = AA0000010000000000000009 /* IncomeClock.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA0000010000000000000402 /* IncomeClockDomainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA0000010000000000000703 /* Build configuration list for PBXNativeTarget "IncomeClockDomainTests" */;
+			buildPhases = (
+				AA0000010000000000000204 /* Sources */,
+				AA0000010000000000000205 /* Frameworks */,
+				AA0000010000000000000206 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA0000010000000000000802 /* PBXTargetDependency */,
+			);
+			name = IncomeClockDomainTests;
+			productName = IncomeClockDomainTests;
+			productReference = AA0000010000000000000021 /* IncomeClockDomainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AA0000010000000000000403 /* IncomeClockPersistenceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA0000010000000000000704 /* Build configuration list for PBXNativeTarget "IncomeClockPersistenceTests" */;
+			buildPhases = (
+				AA0000010000000000000207 /* Sources */,
+				AA0000010000000000000208 /* Frameworks */,
+				AA0000010000000000000209 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA0000010000000000000804 /* PBXTargetDependency */,
+			);
+			name = IncomeClockPersistenceTests;
+			productName = IncomeClockPersistenceTests;
+			productReference = AA0000010000000000000031 /* IncomeClockPersistenceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AA0000010000000000000404 /* IncomeClockApplicationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA0000010000000000000705 /* Build configuration list for PBXNativeTarget "IncomeClockApplicationTests" */;
+			buildPhases = (
+				AA0000010000000000000211 /* Sources */,
+				AA0000010000000000000210 /* Frameworks */,
+				AA0000010000000000000212 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA0000010000000000000806 /* PBXTargetDependency */,
+			);
+			name = IncomeClockApplicationTests;
+			packageProductDependencies = (
+				AA0000010000000000000902 /* ZIPFoundation */,
+			);
+			productName = IncomeClockApplicationTests;
+			productReference = AA0000010000000000000038 /* IncomeClockApplicationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AA0000010000000000000405 /* IncomeClockUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA0000010000000000000706 /* Build configuration list for PBXNativeTarget "IncomeClockUITests" */;
+			buildPhases = (
+				AA0000010000000000000213 /* Sources */,
+				AA0000010000000000000214 /* Frameworks */,
+				AA0000010000000000000215 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA0000010000000000000808 /* PBXTargetDependency */,
+			);
+			name = IncomeClockUITests;
+			productName = IncomeClockUITests;
+			productReference = AA0000010000000000000044 /* IncomeClockUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA0000010000000000000501 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AA0000010000000000000401 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					AA0000010000000000000402 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = AA0000010000000000000401;
+					};
+					AA0000010000000000000403 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = AA0000010000000000000401;
+					};
+					AA0000010000000000000404 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = AA0000010000000000000401;
+					};
+					AA0000010000000000000405 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = AA0000010000000000000401;
+					};
+				};
+			};
+			buildConfigurationList = AA0000010000000000000701 /* Build configuration list for PBXProject "IncomeClock" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = zh_CN;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				zh_CN,
+			);
+			mainGroup = AA0000010000000000000300;
+			productRefGroup = AA0000010000000000000309 /* Products */;
+			packageReferences = (
+				AA0000010000000000000901 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+			);
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA0000010000000000000401 /* IncomeClock */,
+				AA0000010000000000000402 /* IncomeClockDomainTests */,
+				AA0000010000000000000403 /* IncomeClockPersistenceTests */,
+				AA0000010000000000000404 /* IncomeClockApplicationTests */,
+				AA0000010000000000000405 /* IncomeClockUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA0000010000000000000203 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0000010000000000000147 /* Assets.xcassets in Resources */,
+				AA0000010000000000000148 /* BuiltinThemes in Resources */,
+				AA0000010000000000000156 /* THIRD_PARTY_NOTICES.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000010000000000000206 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000010000000000000209 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000010000000000000212 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000010000000000000215 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA0000010000000000000202 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0000010000000000000101 /* IncomeClockApp.swift in Sources */,
+				AA0000010000000000000102 /* AppDelegate.swift in Sources */,
+				AA0000010000000000000103 /* AppEnvironment.swift in Sources */,
+				AA0000010000000000000104 /* MenuBarContentView.swift in Sources */,
+				AA0000010000000000000105 /* PanelController.swift in Sources */,
+				AA0000010000000000000106 /* EmptyPanelView.swift in Sources */,
+				AA0000010000000000000107 /* EmptySettingsView.swift in Sources */,
+				AA0000010000000000000108 /* DomainValues.swift in Sources */,
+				AA0000010000000000000109 /* Workday.swift in Sources */,
+				AA0000010000000000000110 /* EarningsCalculator.swift in Sources */,
+				AA0000010000000000000111 /* WorkdayState.swift in Sources */,
+				AA0000010000000000000112 /* StateDeriver.swift in Sources */,
+				AA0000010000000000000113 /* Clock.swift in Sources */,
+				AA0000010000000000000119 /* PersistenceRecords.swift in Sources */,
+				AA0000010000000000000120 /* RecordRecovery.swift in Sources */,
+				AA0000010000000000000121 /* RecordMigration.swift in Sources */,
+				AA0000010000000000000122 /* RecordFileStore.swift in Sources */,
+				AA0000010000000000000123 /* RecordRepository.swift in Sources */,
+				AA0000010000000000000128 /* BusinessStoreModels.swift in Sources */,
+				AA0000010000000000000129 /* BusinessWorkdayCalendar.swift in Sources */,
+				AA0000010000000000000130 /* BusinessStore.swift in Sources */,
+				AA0000010000000000000134 /* PanelPresentationProfile.swift in Sources */,
+				AA0000010000000000000135 /* PanelPlacementController.swift in Sources */,
+				AA0000010000000000000137 /* PanelSettingsCoordinator.swift in Sources */,
+				AA0000010000000000000139 /* Stage6ServiceModels.swift in Sources */,
+				AA0000010000000000000140 /* LoginItemController.swift in Sources */,
+				AA0000010000000000000141 /* UNUserNotificationCenterService.swift in Sources */,
+				AA0000010000000000000142 /* SMAppServiceLoginItemService.swift in Sources */,
+				AA0000010000000000000144 /* ThemeModels.swift in Sources */,
+				AA0000010000000000000145 /* ThemeStore.swift in Sources */,
+				AA0000010000000000000151 /* ThemeImportModels.swift in Sources */,
+				AA0000010000000000000146 /* BundledThemeCatalog.swift in Sources */,
+				AA0000010000000000000152 /* ThemePackageValidation.swift in Sources */,
+				AA0000010000000000000153 /* ThemeRepository.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000010000000000000204 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0000010000000000000114 /* DomainTestFixtures.swift in Sources */,
+				AA0000010000000000000115 /* DomainValuesTests.swift in Sources */,
+				AA0000010000000000000116 /* EarningsCalculatorTests.swift in Sources */,
+				AA0000010000000000000117 /* StateDeriverTests.swift in Sources */,
+				AA0000010000000000000118 /* ClockTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000010000000000000207 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0000010000000000000124 /* PersistenceTestSupport.swift in Sources */,
+				AA0000010000000000000125 /* PersistenceRecordsTests.swift in Sources */,
+				AA0000010000000000000126 /* RecordMigrationTests.swift in Sources */,
+				AA0000010000000000000127 /* RecordRepositoryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000010000000000000211 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0000010000000000000131 /* ApplicationTestSupport.swift in Sources */,
+				AA0000010000000000000132 /* BusinessStoreTests.swift in Sources */,
+				AA0000010000000000000133 /* BusinessStoreIntegrationTests.swift in Sources */,
+				AA0000010000000000000136 /* PanelTests.swift in Sources */,
+				CE9000010000000000000002 /* SettingsInteractionTests.swift in Sources */,
+				CE9000020000000000000002 /* PanelCloseoutIntegrationTests.swift in Sources */,
+				AA0000010000000000000143 /* Stage6ServiceTests.swift in Sources */,
+				AA0000010000000000000149 /* ThemeStoreTests.swift in Sources */,
+				AA0000010000000000000154 /* Stage8ThemeImportTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000010000000000000213 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0000010000000000000138 /* ShortcutUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA0000010000000000000802 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA0000010000000000000401 /* IncomeClock */;
+			targetProxy = AA0000010000000000000801 /* PBXContainerItemProxy */;
+		};
+		AA0000010000000000000804 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA0000010000000000000401 /* IncomeClock */;
+			targetProxy = AA0000010000000000000803 /* PBXContainerItemProxy */;
+		};
+		AA0000010000000000000806 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA0000010000000000000401 /* IncomeClock */;
+			targetProxy = AA0000010000000000000805 /* PBXContainerItemProxy */;
+		};
+		AA0000010000000000000808 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA0000010000000000000401 /* IncomeClock */;
+			targetProxy = AA0000010000000000000807 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AA0000010000000000000601 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA0000010000000000000602 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AA0000010000000000000603 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = IncomeClock/Resources/IncomeClock.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = IncomeClock/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ffq.incomeclock;
+				PRODUCT_NAME = IncomeClock;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA0000010000000000000604 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = IncomeClock/Resources/IncomeClock.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = IncomeClock/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ffq.incomeclock;
+				PRODUCT_NAME = IncomeClock;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AA0000010000000000000605 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ffq.incomeclock.DomainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IncomeClock.app/Contents/MacOS/IncomeClock";
+			};
+			name = Debug;
+		};
+		AA0000010000000000000606 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ffq.incomeclock.DomainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IncomeClock.app/Contents/MacOS/IncomeClock";
+			};
+			name = Release;
+		};
+		AA0000010000000000000607 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ffq.incomeclock.PersistenceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IncomeClock.app/Contents/MacOS/IncomeClock";
+			};
+			name = Debug;
+		};
+		AA0000010000000000000608 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ffq.incomeclock.PersistenceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IncomeClock.app/Contents/MacOS/IncomeClock";
+			};
+			name = Release;
+		};
+		AA0000010000000000000609 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ffq.incomeclock.ApplicationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IncomeClock.app/Contents/MacOS/IncomeClock";
+			};
+			name = Debug;
+		};
+		AA0000010000000000000610 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ffq.incomeclock.ApplicationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IncomeClock.app/Contents/MacOS/IncomeClock";
+			};
+			name = Release;
+		};
+		AA0000010000000000000611 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ffq.incomeclock.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = IncomeClock;
+			};
+			name = Debug;
+		};
+		AA0000010000000000000612 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ffq.incomeclock.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = IncomeClock;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA0000010000000000000701 /* Build configuration list for PBXProject "IncomeClock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000010000000000000601 /* Debug */,
+				AA0000010000000000000602 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA0000010000000000000702 /* Build configuration list for PBXNativeTarget "IncomeClock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000010000000000000603 /* Debug */,
+				AA0000010000000000000604 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA0000010000000000000703 /* Build configuration list for PBXNativeTarget "IncomeClockDomainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000010000000000000605 /* Debug */,
+				AA0000010000000000000606 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA0000010000000000000704 /* Build configuration list for PBXNativeTarget "IncomeClockPersistenceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000010000000000000607 /* Debug */,
+				AA0000010000000000000608 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA0000010000000000000705 /* Build configuration list for PBXNativeTarget "IncomeClockApplicationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000010000000000000609 /* Debug */,
+				AA0000010000000000000610 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA0000010000000000000706 /* Build configuration list for PBXNativeTarget "IncomeClockUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000010000000000000611 /* Debug */,
+				AA0000010000000000000612 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA0000010000000000000901 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
+			requirement = {
+				kind = revision;
+				revision = 22787ffb59de99e5dc1fbfe80b19c97a904ad48d;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA0000010000000000000902 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000010000000000000901 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = AA0000010000000000000501 /* Project object */;
+}

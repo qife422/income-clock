@@ -1,0 +1,48 @@
+# Public source backup: keep generated history and local runtime data out.
+# New top-level files/directories must be reviewed and added to this allowlist.
+/*
+!/.gitignore
+!/README.md
+!/CHANGELOG.md
+!/AGENTS.md
+!/DECISIONS.md
+!/SPEC.md
+!/UI_SPEC.md
+!/TECH_SPEC.md
+!/SPEC_GOVERNANCE.md
+!/SPEC_INDEX.md
+!/DEVELOPMENT_STATE.md
+!/STAGE9_CLOSEOUT.md
+!/IncomeClock/
+!/IncomeClock.xcodeproj/
+!/IncomeClockDomainTests/
+!/IncomeClockPersistenceTests/
+!/IncomeClockApplicationTests/
+!/IncomeClockUITests/
+!/design/
+!/scripts/
+!/contract_snapshots/
+
+# Regenerable outputs and local editor state (no deletion implied).
+**/.DS_Store
+**/xcuserdata/
+**/.build/
+**/DerivedData/
+**/build/
+**/node_modules/
+**/__pycache__/
+*.pyc
+*.orig
+*.log
+*.xcresult/
+*.app/
+
+# Credentials and signing identities; production entitlements remain source.
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile

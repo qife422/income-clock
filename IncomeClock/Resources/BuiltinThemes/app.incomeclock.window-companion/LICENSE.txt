@@ -1,0 +1,2 @@
+窗边搭子（B）及其 READY、WAITING、EARNING、AWAITING_CLOCK_OUT、COMPLETED 状态插图
+是「可视收入打卡机」的内置原创资源，仅随应用分发。
