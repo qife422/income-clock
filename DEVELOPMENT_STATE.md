@@ -3609,4 +3609,6 @@ DEVELOPMENT_STATE唯一当前权威、INDEX/CLOSEOUT仅定位；Contract Product
 
 上传Artifact Plan：只在现有项目新增Git元数据与少量说明；预计跟踪少于250文件/20MiB，Git元数据上限32MiB/2000files。白名单选择源码/工程/资源/测试/设计、scripts源文件、Contract snapshots和必要根文档，保留资源JSON/PNG/plist/正式entitlements及许可说明；排除约533MB的stage9_closeout_evidence、根STAGE生成记录/日志、临时签名配置、.orig、构建缓存和真实ApplicationSupport。原材料不删除/移动/改写。本次独立源码备份预算不重置或放宽Stage9运行/构建caps、baselines或其未决finding。
 
-备份范围限制：本机治理记录原样保留，内含本机历史路径；远端源码快照不保全临时App/DerivedData/原始xcresult或完整历史证据。Resume008BoundedFixtures与Resume008SchemaFixtures当前不可用，7个固定音频archive合计21477504B未保全；不声称完整integration/native测试可直接重现，已有PASS不得跨机器或缺失输入继承。当前操作为SOURCE_BACKUP_PREPARING；完成后仅在本节补远端回读定位，不升级软件验收。
+备份范围限制：本机治理记录原样保留，内含本机历史路径；远端源码快照不保全临时App/DerivedData/原始xcresult或完整历史证据。Resume008BoundedFixtures与Resume008SchemaFixtures当前不可用，7个固定音频archive合计21477504B未保全；不声称完整integration/native测试可直接重现，已有PASS不得跨机器或缺失输入继承。授权登记时为SOURCE_BACKUP_PREPARING；完成后仅在本节补远端回读定位，不升级软件验收。
+
+实际备份结果：SOURCE_BACKUP_VERIFIED。公开仓库 https://github.com/qife422/income-clock 已创建，默认分支main；首个源码提交7f2b1dafe11da9786979abb808a0c29645b99016已成功推送。GitHub API回读确认visibility=PUBLIC、远端HEAD与本地一致、commit tree为6da62381c7341803eb723a3590e4eca00cd89ac4，173个blob的路径/mode/object SHA逐项相同，共12124768B。首次检查误将trees/main接口的顶层sha（该响应为commit SHA）当作tree SHA，断言失败；改用commit.tree.sha并逐文件比较后确认无缺失、无额外文件、无对象差异。README本地链接存在，git diff --cached --check通过；受保护Contract指纹未变，已选文件未命中所检查的常见凭据模式。检查结论仅适用于本次源码备份，不是全面安全审计或应用验收。本记录作为后续小提交继续推送；最终提交以GitHub main与Git同步回读为准。本次构建/测试/原生启动/签名/二进制发布/历史清理均未执行。
