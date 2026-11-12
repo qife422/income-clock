@@ -276,13 +276,13 @@ enum Stage5AmountFormatter {
     static func string(for amount: BusinessEarnedAmount) -> String? {
         switch amount {
         case .hidden: return nil
-        case let .live(value): return string(minorUnits: value.rawValue, fractionDigits: 3)
+        case let .live(value): return string(minorUnits: value.rawValue, fractionDigits: 4)
         case let .rounded(value): return string(minorUnits: value.rawValue, fractionDigits: 2)
         }
     }
 
     static func string(minorUnits: Int64, fractionDigits: Int) -> String {
-        let divisor: Int64 = fractionDigits == 3 ? 1_000 : 100
+        let divisor: Int64 = fractionDigits == 4 ? 10_000 : 100
         return "¥\(grouped(minorUnits / divisor)).\(String(format: "%0*lld", fractionDigits, minorUnits % divisor))"
     }
 
@@ -346,8 +346,8 @@ enum Stage5AmountFormatter {
         switch amount {
         case .hidden: return "收入不可用"
         case let .live(value):
-            let rest = value.rawValue % 1_000
-            return "\(value.rawValue / 1_000) 元 \(rest / 100) 角 \((rest / 10) % 10) 分 \(rest % 10) 厘，实时收入估算"
+            let rest = value.rawValue % 10_000
+            return "\(value.rawValue / 10_000) 元 \(rest / 1_000) 角 \((rest / 100) % 10) 分 \((rest / 10) % 10) 厘 \(rest % 10) 毫，实时收入估算"
         case let .rounded(value):
             return "\(value.rawValue / 100) 元 \((value.rawValue / 10) % 10) 角 \(value.rawValue % 10) 分，已结算"
         }
@@ -720,6 +720,36 @@ private struct PanelAmountView: NSViewRepresentable {
     }
 }
 
+private struct PanelAmountHeader: View {
+    let title: String
+    let amount: BusinessEarnedAmount
+    let font: NSFont
+    let palette: WarmIslandPalette
+    let labelHeight: CGFloat
+    let amountHeight: CGFloat
+
+    var body: some View {
+        let formatted = Stage5AmountFormatter.string(for: amount) ?? ""
+        let bounds = PanelAmountGeometry.glyphs(formatted, font: font, height: amountHeight)
+            .reduce(CGRect.null) { $0.union($1.frame) }
+        let center = bounds.isNull ? 140 : bounds.midX
+        return VStack(spacing: 0) {
+            Text(title)
+                .incomePanelFont(size: 11)
+                .foregroundStyle(palette.secondary)
+                .lineLimit(1)
+                .fixedSize()
+                .position(x: center, y: labelHeight / 2)
+                .frame(height: labelHeight)
+            PanelAmountView(amount: amount, font: font, color: NSColor(palette.primary),
+                            preset: .resolve(themeID: palette.themeID), height: amountHeight)
+                .frame(height: amountHeight)
+        }
+        .frame(width: 280)
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
 enum Stage5DurationFormatter {
     static func string(_ duration: DurationMilliseconds) -> String {
         let seconds = duration.rawValue / 1_000
@@ -920,7 +950,7 @@ enum ThemeImportPreviewScenario {
             canRequestClockOut = false
             canRequestTodayReset = false
         case .earning:
-            amount = .live(try! LiveEarnedMilliYuan(validating: 120_000))
+            amount = .live(try! LiveEarnedTenThousandths(validating: 1_200_000))
             earnedDuration = duration(5 * 60 * 60 * 1_000 + 15 * 60 * 1_000)
             scheduledProgress = 0.625
             remainingToEnd = duration(3 * 60 * 60 * 1_000 + 45 * 60 * 1_000)
@@ -1041,7 +1071,8 @@ private struct StandardPanelSemanticContent: View {
                 }
             } else {
                 amountBlock.fixedPanelFrame("amount", CGRect(x: 12, y: 38, width: 296, height: 60))
-                supportBlock.fixedPanelFrame("support", CGRect(x: 12, y: 100, width: 228, height: 42))
+                supportBlock.fixedPanelFrame("support", CGRect(x: 12, y: 100,
+                    width: input.state == .unconfigured ? 296 : 228, height: 42))
                 actionBlock.fixedPanelFrame("primaryAction", CGRect(x: 12, y: 148, width: 296, height: 32))
             }
         }
@@ -1074,15 +1105,11 @@ private struct StandardPanelSemanticContent: View {
         let formatted = Stage5AmountFormatter.string(for: input.amount) ?? ""
         let size = Stage5AmountFormatter.fontSize(for: formatted, weight: palette.amountFontWeight,
             design: palette.amountFontDesign, textScale: textScale, availableHeight: height)
-        return VStack(spacing: 0) {
-            Text(input.isPreviousWorkday ? "工作日 \(input.todayDateKey ?? "")" : "今日已获得")
-                .incomePanelFont(size: 11).foregroundStyle(palette.secondary)
-                .frame(height: labelHeight)
-            PanelAmountView(amount: input.amount,
-                font: Stage5AmountFormatter.measuredFont(size: size, weight: palette.amountFontWeight, design: palette.amountFontDesign),
-                color: NSColor(palette.primary), preset: .resolve(themeID: palette.themeID), height: height)
-                .frame(width: 280, height: height).frame(maxWidth: .infinity, alignment: .leading)
-        }
+        let font = Stage5AmountFormatter.measuredFont(size: size, weight: palette.amountFontWeight,
+                                                      design: palette.amountFontDesign)
+        return PanelAmountHeader(title: input.isPreviousWorkday ? "工作日 \(input.todayDateKey ?? "")" : "今日已获得",
+                                 amount: input.amount, font: font, palette: palette,
+                                 labelHeight: labelHeight, amountHeight: height)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("今日已获得")
         .accessibilityAddTraits(.isStaticText)
@@ -1102,15 +1129,10 @@ private struct StandardPanelSemanticContent: View {
                                                  design: palette.amountFontDesign, textScale: textScale)
         let amountHeight = Stage5AmountFormatter.amountHeight(textScale: textScale)
         return VStack(spacing: 0) {
-            Text("今日已获得")
-                .incomePanelFont(size: 11)
-                .foregroundStyle(palette.secondary)
-                .frame(height: 13 * textScale)
-            PanelAmountView(amount: input.amount,
-                font: Stage5AmountFormatter.measuredFont(size: size, weight: palette.amountFontWeight, design: palette.amountFontDesign),
-                color: NSColor(palette.primary), preset: .resolve(themeID: palette.themeID), height: amountHeight)
-                .frame(width: 280, height: amountHeight)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            PanelAmountHeader(title: "今日已获得", amount: input.amount,
+                font: Stage5AmountFormatter.measuredFont(size: size, weight: palette.amountFontWeight,
+                                                         design: palette.amountFontDesign),
+                palette: palette, labelHeight: 13 * textScale, amountHeight: amountHeight)
             Text(input.presentation.precisionNote ?? " ")
                 .incomePanelFont(size: 10)
                 .foregroundStyle(palette.secondary)
@@ -1710,12 +1732,10 @@ struct IncomePanelView: View {
                                                  design: palette.amountFontDesign, textScale: scale)
         let amountHeight = Stage5AmountFormatter.amountHeight(textScale: scale)
         return VStack(spacing: 0) {
-            Text("今日已获得").incomePanelFont(size: 11).foregroundStyle(palette.secondary).frame(height: 13 * scale)
-            PanelAmountView(amount: amount,
-                font: Stage5AmountFormatter.measuredFont(size: size, weight: palette.amountFontWeight, design: palette.amountFontDesign),
-                color: NSColor(palette.primary), preset: .resolve(themeID: palette.themeID), height: amountHeight)
-                .frame(width: 280, height: amountHeight)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            PanelAmountHeader(title: "今日已获得", amount: amount,
+                font: Stage5AmountFormatter.measuredFont(size: size, weight: palette.amountFontWeight,
+                                                         design: palette.amountFontDesign),
+                palette: palette, labelHeight: 13 * scale, amountHeight: amountHeight)
             Text(note ?? " ").incomePanelFont(size: 10).foregroundStyle(palette.secondary).frame(height: 12 * scale)
         }.accessibilityElement(children: .ignore).accessibilityLabel("今日已获得")
         .accessibilityAddTraits(.isStaticText)

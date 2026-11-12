@@ -276,7 +276,7 @@ final class NativeMenuSummaryContrast {
         // sampled fingerprint before the menu begins tracking. This exception
         // is confined to the earning detail; every other title stays exact.
         guard index == 1, summary[0] == "计薪中" else { return false }
-        let liveDetail = #"\A今日已获得 ¥(?:0|[1-9][0-9]{0,2})(?:,[0-9]{3})*\.[0-9]{3} · 距离下班 (?:[0-9]{2}|[1-9][0-9]{2,}):[0-5][0-9]:[0-5][0-9]\z"#
+        let liveDetail = #"\A今日已获得 ¥(?:0|[1-9][0-9]{0,2})(?:,[0-9]{3})*\.[0-9]{4} · 距离下班 (?:[0-9]{2}|[1-9][0-9]{2,}):[0-5][0-9]:[0-5][0-9]\z"#
         return expected.range(of: liveDetail, options: .regularExpression) != nil &&
                actual.range(of: liveDetail, options: .regularExpression) != nil
     }

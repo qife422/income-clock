@@ -2,8 +2,8 @@
 title: 可视收入打卡机当前开发状态
 document_type: development_state
 rigor_level: strict
-last_updated: 2026-10-08
-current_phase: "Stage9: current Runner prior UIData permissions restored once/independently verified static only; fresh native preparation/capacity authorization pending"
+last_updated: 2026-11-12
+current_phase: "Warm Island panel update installed and opened locally; Stage 9 paused"
 workflow_route: stage9_software_closeout
 stage9_current_release_delivery_state: verified
 stage9_current_release_review_status: completed
@@ -124,6 +124,9 @@ stage9_menu_remaining_xctest_recovery_product_layout_review_scope: fixed_prepara
 stage9_menu_remaining_xctest_recovery_product_layout_review: STAGE9_MENU_REMAINING_XCTEST_RECOVERY_REPAIR_REVIEW.json
 stage9_menu_remaining_xctest_recovery_checkpoint: STAGE9_MENU_REMAINING_XCTEST_RECOVERY_REPAIR_CHECKPOINT.json
 active_candidate_manifest: "contract_snapshots/2026-08-17-pd2rr-007-recovery-transaction-repair-candidates/SHA256SUMS"
+live_precision_candidate_manifest: "contract_snapshots/2026-11-12-live-precision/SHA256SUMS"
+panel_layout_candidate_manifest: "contract_snapshots/2026-11-12-panel-layout/SHA256SUMS"
+warm_island_candidate_manifest: "contract_snapshots/2026-11-12-warm-island/SHA256SUMS"
 historical_b14_active_delivery_review_input: "/Users/ffq/Documents/aicoding项目/可视收入打卡机_review_inputs/stage9-batch-b14-t014-settings-commit-recovery-validation-2026-09-02-001"
 active_delivery_review_input: null
 historical_b14_active_delivery_review_seal: "/Users/ffq/Documents/aicoding项目/可视收入打卡机_review_seals/stage9-batch-b14-t014-settings-commit-recovery-validation-2026-09-02-001"
@@ -288,8 +291,8 @@ latest_completed_stage6_review_conclusion: NOT_READY
 stage7_delivery_review_status: completed
 stage7_delivery_review_conclusion: READY
 latest_completed_stage7_review_conclusion: READY
-active_authorization: stage9_software_closeout_20260907
-recommended_next_work_package: "Human decision on exact test-only menu-closing synchronization and one diagnostic build proposal in stage9_closeout_evidence/menu-remaining-diagnostic-native/execution/next-action.json. Current native allowance consumed; signing/restoration and a later native require their explicit bounded gates/current capacity and fresh session."
+active_authorization: none
+recommended_next_work_package: "User is using the local app. Stage 9 and testing remain paused."
 execution_mode: continuous
 final_human_acceptance: PENDING
 deployment_authorization: NOT_AUTHORIZED
@@ -1048,10 +1051,10 @@ artifact_plan:
   cleanup_scope: "Task-generated compilation caches, indexes and intermediate files within the sole DerivedData; exact inventory and no-use checks; exclude results/source/dependencies/fixed/history/final outputs"
   disposition: "Exact cache disposals recorded; protected results and evidence retained"
 
-execution_paused: false
+execution_paused: true
 pause_source: null
-execution_blocker: "\u00a7158\u2013\u00a7159: current Runner restoration/static identity and minimum seal/doc integrity verified. Native behavior UNVERIFIED; old M7 profile unavailable; phase10360/10548 remaining188 files. Corrected +512/static successor proposal technically READY but UNAPPLIED_NOT_AUTHORIZED; native needs later separate fresh hands-off grant."
-resume_checkpoint: "DEVELOPMENT_STATE.md section159; stage9_closeout_evidence/menu-remaining-runner-restoration/STAGE9_MENU_REMAINING_RUNNER_RESTORATION_CHECKPOINT.json; support FINAL_INTEGRITY_REVIEW available; static verified, next proposal NOT_AUTHORIZED"
+execution_blocker: "User stopped testing on 2026-11-12; Stage 9 runtime validation paused."
+resume_checkpoint: "DEVELOPMENT_STATE.md §164"
 latest_built_code_snapshot: "stage9_closeout_evidence/menu-remaining-closure-repair/STAGE9_MENU_REMAINING_CLOSURE_REPAIR_SOURCE.json"
 current_build_source_manifest: "stage9_closeout_evidence/menu-remaining-closure-repair/STAGE9_MENU_REMAINING_CLOSURE_REPAIR_SOURCE.json"
 last_successful_build_source_manifest: "stage9_closeout_evidence/menu-remaining-closure-repair/STAGE9_MENU_REMAINING_CLOSURE_REPAIR_SOURCE.json"
@@ -3612,3 +3615,51 @@ DEVELOPMENT_STATE唯一当前权威、INDEX/CLOSEOUT仅定位；Contract Product
 备份范围限制：本机治理记录原样保留，内含本机历史路径；远端源码快照不保全临时App/DerivedData/原始xcresult或完整历史证据。Resume008BoundedFixtures与Resume008SchemaFixtures当前不可用，7个固定音频archive合计21477504B未保全；不声称完整integration/native测试可直接重现，已有PASS不得跨机器或缺失输入继承。授权登记时为SOURCE_BACKUP_PREPARING；完成后仅在本节补远端回读定位，不升级软件验收。
 
 实际备份结果：SOURCE_BACKUP_VERIFIED。公开仓库 https://github.com/qife422/income-clock 已创建，默认分支main；首个源码提交7f2b1dafe11da9786979abb808a0c29645b99016已成功推送。GitHub API回读确认visibility=PUBLIC、远端HEAD与本地一致、commit tree为6da62381c7341803eb723a3590e4eca00cd89ac4，173个blob的路径/mode/object SHA逐项相同，共12124768B。首次检查误将trees/main接口的顶层sha（该响应为commit SHA）当作tree SHA，断言失败；改用commit.tree.sha并逐文件比较后确认无缺失、无额外文件、无对象差异。README本地链接存在，git diff --cached --check通过；受保护Contract指纹未变，已选文件未命中所检查的常见凭据模式。检查结论仅适用于本次源码备份，不是全面安全审计或应用验收。本记录作为后续小提交继续推送；最终提交以GitHub main与Git同步回读为准。本次构建/测试/原生启动/签名/二进制发布/历史清理均未执行。
+
+
+## 161. 四位实时估算与停止测试 — 2026-11-12
+
+用户明确要求停止测试、金额小数点增加一位，并按现行工作区《开发范式》快速收尾。产品决定落实为计薪估算四位、等待开工显示四位零；工资输入、预计结算及最终结算按分。授权工作包仅为本次源码、既有断言、精度候选及交接更新。原 Stage 9 实施授权留在历史记录中，测试暂停。
+
+可重建基线为本地 Git 599b029d99e044e76f917504d83827384227138d。Product 0.9 / UI 0.6 / Technical 0.5 完整后继候选固定在 `contract_snapshots/2026-11-12-live-precision/SHA256SUMS`，Contract 文档状态 `review`。用户本次精度决定与源码修改授权分别记录于上段。既有批准基线和历史证据保留。后继局部源码验证仅做静态核对，原生验证暂停。
+
+Artifact Plan：精度变更仅使用现有源码、测试文件和一个小型 Contract 候选。构建缓存、测试产物及真实业务目录无新增计划。
+
+源码修改已完成，精度工作包 `live_precision_source_closeout_20261112` 已收尾。结果为面板、菜单和 VoiceOver 四位实时估算，按权威时间直接整数 half-up，结算仍独立按分。依赖精度的既有断言已同步。独立 reviewer 只读核对了计算、展示和候选关键段，未发现阻断问题。既有与后继 Contract manifest 回读、旧符号扫描及 `git diff --check` 通过。源码及既有断言 11 个文件的排序路径与 SHA-256 清单指纹为 `c77b9d2476881378bedcd151888b732c71c73097391d99e2c5b654dd6a017d63`，后继 Contract manifest SHA-256 为 `a68d85e96a08c818921b9b9dd399e555ea03a7e97e308ba9ab7aa0ccf186c67f`。
+
+未发现运行中的项目测试进程，本轮未启动测试、构建或签名。交付限源码，当前运行与视觉验证暂停，既有验证证据仅适用于各自绑定的旧构建。Stage 9 整体 NOT_READY、最终人工验收 PENDING、发布 NOT_AUTHORIZED。Artifact Disposition：保留小型固定候选及既有证据，未创建缓存或运行产物，历史清理仍为 cleanup-pending-authorization。
+
+
+## 162. 四位实时估算本机交付 — 2026-11-12
+
+用户明确授权对 §161 的源码仅执行一次构建，交付本机使用的 App。范围为当前 macOS arm64 的 Release App、构建内本机 ad hoc 签名、静态产物核对、复制到新的用户 Applications 路径。沿用产品现有沙盒配置及 Bundle ID。Stage 9 测试与完整验收保持暂停。
+
+Artifact Plan：唯一临时根 `/private/tmp/visual-income-check-in/local-precision`，DerivedData 为其直接子目录，结果单列 `Build.xcresult`，现有 ZIPFoundation 锁定依赖可由本机缓存取得。构建限制两并行任务并关闭索引。沿用 2 GiB DerivedData、50,000 文件及适用放大阈值。交付目标 `~/Applications/IncomeClock.app`，只在该路径空缺时复制。构建首次失败或超预算即停止，保留日志；人工验收和对外发布状态沿用既有记录。
+
+
+本机交付完成。Xcode 27.2 (27B52) 对 §161 指纹源码执行了一次 `xcodebuild build`，Release arm64，退出码 0。Build.log 与 Build.xcresult 留在上述临时根。已交付 `/Users/ffq/Applications/IncomeClock.app`。Bundle ID、arm64、原沙盒权限与本机签名静态核对通过。Xcode 本机签名附加 `get-task-allow`。交付二进制 SHA-256 `6a358b9e718598df73766d695f372b09b33b777de8fee291747e87b29e163829` 与构建输出一致。App 未由 Codex 启动，测试、Stage 9 验收和对外发布保持暂停。一次构建授权已用毕。
+
+Artifact Disposition：交付 App 保留，临时构建根保留且待另行清理授权，DerivedData 165428 KiB，临时根 845 个文件。原 Stage 9 证据与判定按各自既有范围保留。
+
+
+## 163. 金额标题对齐与初始面板 — 2026-11-12
+
+用户要求金额标题居中对准数字，并完善未配置时的右侧留白。授权范围为面板布局源码及固定 UI 候选。标题按实际金额字形居中；小数点锚位、业务动作与金额精度保留。未配置状态无装饰，进度和辅助信息扩至内容区全宽。Stage 9 和测试保持暂停。
+
+Artifact Plan：修改单个 Swift 源文件，在 `contract_snapshots/2026-11-12-panel-layout/SHA256SUMS` 固定完整候选。使用上一候选 Product 与 Technical 内容和本次 UI 变更，不写旧快照或缓存。源码前像 SHA-256 `8bf9d95521a03cb3ac568c95deba64661b8e2467c7431a3dc2bf988267cac64c`，前像可从 §162 已构建源码的基线与 §161 精度改动重建。
+
+源码调整完成。变更源码 SHA-256 `737580ab756c5585b02f50e1478e3330bc1623b4b27dda95872e129120379e92`，候选 manifest SHA-256 `26db994c59b615e213cf0ad8e15d7be5211ac03b324be76d09b345c26787ac75`。UI 0.7 候选状态为 review；Product 与 Technical 原候选字节原样沿用，Technical 源 UI 引用记录其 0.6 精度基线。局部独立静态复核、Swift 语法解析、manifest 回读与 `git diff --check` 通过。实际视觉与运行效果待本机使用验证。§162 安装的 App 仍为上一版本，本次授权限源码与候选，未启动构建、签名或测试。Artifact Disposition：保留固定候选，无新增构建或测试产物。
+
+
+## 164. 暖屿视觉微调与本机更新 — 2026-11-12
+
+用户要求在既有金额标题与初始页布局调整上微调默认皮肤，合并一次本机 Release arm64 构建，更新并直接打开现有 IncomeClock。范围为暖屿浅深色、默认主题资源及同值回退、固定候选、一次本机 ad hoc 构建与精确 App 更新。保留已暂停的 Stage 9、测试和发布门禁。App 打开后由用户自行使用。
+
+Artifact Plan：复用 §162 的唯一 DerivedData 和锁定依赖，使用新 WarmIsland.xcresult 与 WarmIsland.log，沿用 2 GiB DerivedData、50,000 文件及适用放大阈值。安装前验证新旧两个 App，确认目标进程退出，再同卷原子互换。保留旧 bundle 作为本机回退，禁止覆盖其他应用、清理历史、主动修改业务数据或自动重试构建。
+
+
+暖屿浅色为不透明奶油色、深苔绿主按钮、暖褐阴影；深色为不透明深绿底和较轻阴影。Swift 回退与打包 JSON 一致，浅深主按钮静态对比度分别 5.90:1、8.37:1。固定 UI 候选状态为 review，manifest SHA-256 `6b9847d258f7159b1057a7b8c12360c7d8a0ec538751cc931bc0cc14568fefc6`。
+
+一次 Xcode 27.2 Release arm64 `xcodebuild build` 成功（退出 0），本机签名、Bundle ID、沙盒权限及资源回读通过。仅向旧安装实例发送正常退出，原子互换新旧 bundle，更新并打开 `/Users/ffq/Applications/IncomeClock.app`，启动路径与新二进制 SHA-256 `a54b8bf772977527f039a2bbca1b91b1813b09a356fb5aff00f3c0a115ba3a8a` 一致。旧 bundle 留在 `/Users/ffq/Applications/.incomeclock-update-ftfkzwah/IncomeClock.app`。用户自行看效果，未跑测试及未恢复 Stage 9。
+
+Artifact Disposition：保留旧 bundle 作回退，临时构建根保留待清理授权，DerivedData 167056 KiB、运行根 881 个文件。现有部署状态不变。

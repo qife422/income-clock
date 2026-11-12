@@ -202,18 +202,18 @@ final class ShortcutUITests: XCTestCase {
         let todayURL = root.appendingPathComponent("Records/today.json")
         let todayBytes = try Data(contentsOf: todayURL)
         let amount = panel.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "今日已获得")).firstMatch
-        func liveMilliYuan() throws -> Int64 {
+        func liveTenThousandths() throws -> Int64 {
             let value = try XCTUnwrap(amount.value as? String)
             let fields = value.split(separator: " ")
-            XCTAssertEqual(fields.count, 8, value)
-            guard fields.count == 8, let yuan = Int64(fields[0]), let jiao = Int64(fields[2]),
-                  let fen = Int64(fields[4]), let li = Int64(fields[6]) else {
+            XCTAssertEqual(fields.count, 10, value)
+            guard fields.count == 10, let yuan = Int64(fields[0]), let jiao = Int64(fields[2]),
+                  let fen = Int64(fields[4]), let li = Int64(fields[6]), let hao = Int64(fields[8]) else {
                 throw NSError(domain: "Stage9VisibleAmount", code: 1)
             }
-            XCTAssertEqual(value, amountVoiceValue(yuan * 1000 + jiao * 100 + fen * 10 + li, live: true))
-            return yuan * 1000 + jiao * 100 + fen * 10 + li
+            XCTAssertEqual(value, amountVoiceValue(yuan * 10_000 + jiao * 1_000 + fen * 100 + li * 10 + hao, live: true))
+            return yuan * 10_000 + jiao * 1_000 + fen * 100 + li * 10 + hao
         }
-        let beforeHide = try liveMilliYuan()
+        let beforeHide = try liveTenThousandths()
         app.activate()
         app.typeKey("i", modifierFlags: [.option, .command])
         XCTAssertTrue(waitUntil(panel, exists: false))
@@ -243,7 +243,7 @@ final class ShortcutUITests: XCTestCase {
         }
         for index in 0..<4 {
             let sampledBefore = ProcessInfo.processInfo.systemUptime
-            let observed = try liveMilliYuan()
+            let observed = try liveTenThousandths()
             let label = nativeStaticText(countdown)
             let sampledAfter = ProcessInfo.processInfo.systemUptime
             // Amount brackets include actual command and UI snapshot latency.
@@ -264,7 +264,7 @@ final class ShortcutUITests: XCTestCase {
             XCTAssertGreaterThanOrEqual(remaining, max(0, scheduledEnd - upperTime) / 1000)
             XCTAssertLessThanOrEqual(remaining, max(0, scheduledEnd - (lowerTime - 1000)) / 1000)
             XCTAssertEqual(try Data(contentsOf: todayURL), todayBytes)
-            samples.append("sample=\(index), timestamp=[\(lowerTime),\(upperTime)], milliYuan=\(observed) expected=[\(lowerAmount),\(upperAmount)], countdown=\(label), hiddenSeconds=\(hiddenFor)")
+            samples.append("sample=\(index), timestamp=[\(lowerTime),\(upperTime)], tenThousandthsOfYuan=\(observed) expected=[\(lowerAmount),\(upperAmount)], countdown=\(label), hiddenSeconds=\(hiddenFor)")
             RunLoop.current.run(until: Date().addingTimeInterval(0.2))
         }
         let screenshot = XCTAttachment(screenshot: panel.screenshot())
@@ -1152,7 +1152,7 @@ final class ShortcutUITests: XCTestCase {
                     diagnostic.lifetime = .keepAlways; add(diagnostic)
                     try attach(menu, completed ? "completed-menu" : "menu")
                 }
-                try inspectMenu(waiting ? ["已打卡 · 等待开工", "今日已获得 ¥0.000 · 距离开始 01:00:00"]
+                try inspectMenu(waiting ? ["已打卡 · 等待开工", "今日已获得 ¥0.0000 · 距离开始 01:00:00"]
                     : ["计薪已停止", "今日已获得 ¥900.00 · 请打卡下班"], completed: false)
                 try unchanged()
                 try guardAction(); status.menuItems["打卡下班"].click()
@@ -1334,7 +1334,7 @@ final class ShortcutUITests: XCTestCase {
         firstImage.lifetime = .keepAlways
         add(firstImage)
         XCTAssertFalse(first.contains("...") || first.contains("…"))
-        XCTAssertNotNil(first.range(of: #"^今日已获得 ¥[0-9]{3},[0-9]{3}\.[0-9]{3} · 距离下班 [0-9]{2}:[0-9]{2}:[0-9]{2}$"#,
+        XCTAssertNotNil(first.range(of: #"^今日已获得 ¥[0-9]{3},[0-9]{3}\.[0-9]{4} · 距离下班 [0-9]{2}:[0-9]{2}:[0-9]{2}$"#,
                                     options: .regularExpression))
         XCTAssertTrue(menu.frame.contains(summary.frame))
         XCTAssertEqual(status.textFields.count, 0)
@@ -2521,11 +2521,11 @@ final class ShortcutUITests: XCTestCase {
         let earned = max(Int64(0), min(now, end) - max(clockIn, start))
         let duration = end - start
         XCTAssertGreaterThan(duration, 0)
-        return (wage * earned * (live ? 10 : 1) + duration / 2) / duration
+        return (wage * earned * (live ? 100 : 1) + duration / 2) / duration
     }
 
     private func amountVoiceValue(_ value: Int64, live: Bool) -> String {
-        if live { return "\(value / 1_000) 元 \((value / 100) % 10) 角 \((value / 10) % 10) 分 \(value % 10) 厘，实时收入估算" }
+        if live { return "\(value / 10_000) 元 \((value / 1_000) % 10) 角 \((value / 100) % 10) 分 \((value / 10) % 10) 厘 \(value % 10) 毫，实时收入估算" }
         return "\(value / 100) 元 \((value / 10) % 10) 角 \(value % 10) 分，已结算"
     }
 

@@ -990,7 +990,7 @@ final class Stage8ThemeImportTests: XCTestCase {
                 XCTAssertEqual(input.presentation.actionTitle, "打卡上班")
                 XCTAssertEqual(input.presentation.action, .clockIn(enabled: true))
             case .earning:
-                XCTAssertEqual(Stage5AmountFormatter.string(for: input.amount), "¥120.000")
+                XCTAssertEqual(Stage5AmountFormatter.string(for: input.amount), "¥120.0000")
                 XCTAssertEqual(input.presentation.symbol, "circle.fill")
                 XCTAssertEqual(input.presentation.status, "计薪中")
                 XCTAssertEqual(input.presentation.precisionNote, "实时收入估算")
@@ -1334,11 +1334,11 @@ final class Stage8ThemeImportTests: XCTestCase {
         clock.set(ApplicationTestSupport.timestamp(hour: 12))
         for store in stores { await store.refresh() }
         try await wait { layouts.allSatisfy { $0.frames["primaryAction"] != nil } }
-        try await wait { hosts.allSatisfy { nativeAmount($0)?.targetText == "¥200.000" } }
+        try await wait { hosts.allSatisfy { nativeAmount($0)?.targetText == "¥200.0000" } }
         for host in hosts {
             let amount = try XCTUnwrap(nativeAmount(host))
             XCTAssertFalse(amount.isHiddenOrHasHiddenAncestor)
-            XCTAssertEqual(amount.targetText, "¥200.000")
+            XCTAssertEqual(amount.targetText, "¥200.0000")
         }
         XCTAssertEqual(layouts[0].frames, layouts[1].frames)
         for (name, expected) in [
@@ -1352,7 +1352,7 @@ final class Stage8ThemeImportTests: XCTestCase {
         let initialState = stores.map(\.viewState)
         let initialCalls = await notifications[0].operationLog()
         XCTAssertTrue(initialCalls.contains(.add("workday-end-2026-08-13")))
-        XCTAssertEqual(stores[0].viewState?.amount, .live(try .init(validating: 200_000)))
+        XCTAssertEqual(stores[0].viewState?.amount, .live(try .init(validating: 2_000_000)))
         func compare(_ step: String) async throws {
             XCTAssertEqual(stores[0].viewState, stores[1].viewState, step)
             XCTAssertEqual(stores[0].confirmation, stores[1].confirmation, step)
@@ -1506,7 +1506,7 @@ final class Stage8ThemeImportTests: XCTestCase {
                 nowProvider: clock, timeZoneIdentifier: ApplicationTestSupport.timeZoneIdentifier)
             await business.restore()
             XCTAssertEqual(business.viewState?.state, .earning, invalidField)
-            XCTAssertEqual(business.viewState?.amount, .live(try .init(validating: 200_000)), invalidField)
+            XCTAssertEqual(business.viewState?.amount, .live(try .init(validating: 2_000_000)), invalidField)
             XCTAssertEqual(business.todayRecordForValidation, today, invalidField)
             let businessBeforeFallback = business.viewState
             let todayURL = businessPaths.today
@@ -1529,7 +1529,7 @@ final class Stage8ThemeImportTests: XCTestCase {
             clock.set(ApplicationTestSupport.timestamp(hour: 13))
             await business.refresh()
             XCTAssertEqual(business.viewState?.state, .earning, invalidField)
-            XCTAssertEqual(business.viewState?.amount, .live(try .init(validating: 300_000)), invalidField)
+            XCTAssertEqual(business.viewState?.amount, .live(try .init(validating: 3_000_000)), invalidField)
             XCTAssertEqual(business.viewState?.clockInAt, ApplicationTestSupport.timestamp(hour: 10), invalidField)
             clock.set(ApplicationTestSupport.timestamp(hour: 18))
             await business.refresh()
@@ -1920,7 +1920,7 @@ final class Stage8ThemeImportTests: XCTestCase {
         await themes.useImportedTheme()
         XCTAssertEqual(themes.selectedTheme.id, "com.example.safe-theme")
         try await compare("switch")
-        XCTAssertEqual(business.viewState?.amount, .live(try .init(validating: 200_000)))
+        XCTAssertEqual(business.viewState?.amount, .live(try .init(validating: 2_000_000)))
         await themes.beginImport(from: try validPackage(in: root, name: "earning-upgrade", version: "1.1.0"))
         XCTAssertNotNil(themes.importCandidate)
         await repository.holdNextInstall()
@@ -1932,7 +1932,7 @@ final class Stage8ThemeImportTests: XCTestCase {
         XCTAssertEqual(themes.selectedTheme.manifest.themeVersion, "1.0.0")
         clock.set(ApplicationTestSupport.timestamp(hour: 13))
         try await compare("real installation suspended across earning tick")
-        XCTAssertEqual(business.viewState?.amount, .live(try .init(validating: 300_000)))
+        XCTAssertEqual(business.viewState?.amount, .live(try .init(validating: 3_000_000)))
         await repository.release()
         await installation.value
         XCTAssertNil(themes.importError)
@@ -1950,7 +1950,7 @@ final class Stage8ThemeImportTests: XCTestCase {
         XCTAssertEqual(saved.selectedThemeId, BuiltinThemeID.warmIsland)
         try await compare("delete and durable fallback")
         XCTAssertEqual(business.viewState?.state, .earning)
-        XCTAssertEqual(business.viewState?.amount, .live(try .init(validating: 400_000)))
+        XCTAssertEqual(business.viewState?.amount, .live(try .init(validating: 4_000_000)))
         clock.set(ApplicationTestSupport.timestamp(hour: 18))
         try await compare("scheduled stop")
         XCTAssertEqual(business.viewState?.state, .awaitingClockOut)

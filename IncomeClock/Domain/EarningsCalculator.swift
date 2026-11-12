@@ -12,7 +12,7 @@ struct EarningsCalculationResult: Equatable, Sendable {
     let effectiveEndAt: TimestampMilliseconds
     let earnedDuration: DurationMilliseconds
     let exactEarnedCents: RationalCents
-    let liveEarnedMilliYuan: LiveEarnedMilliYuan
+    let liveEarnedTenThousandths: LiveEarnedTenThousandths
     let roundedEarnedCents: RoundedEarnedCents
     let scheduledProgress: Double
     let remainingToStart: DurationMilliseconds
@@ -68,13 +68,13 @@ enum EarningsCalculator {
                 numerator: exactNumerator,
                 denominator: scheduledDuration.rawValue
             )
-            let liveNumerator = try CheckedInteger.multiply(exactNumerator, 10)
+            let liveNumerator = try CheckedInteger.multiply(exactNumerator, 100)
             let liveRational = try RationalCents(
                 numerator: liveNumerator,
                 denominator: scheduledDuration.rawValue
             )
 
-            let liveEarnedMilliYuan = try LiveEarnedMilliYuan(
+            let liveEarnedTenThousandths = try LiveEarnedTenThousandths(
                 validating: liveRational.roundedHalfUp()
             )
             let roundedEarnedCents = try RoundedEarnedCents(
@@ -90,7 +90,7 @@ enum EarningsCalculator {
                 effectiveEndAt: effectiveEndAt,
                 earnedDuration: earnedDuration,
                 exactEarnedCents: exactEarnedCents,
-                liveEarnedMilliYuan: liveEarnedMilliYuan,
+                liveEarnedTenThousandths: liveEarnedTenThousandths,
                 roundedEarnedCents: roundedEarnedCents,
                 scheduledProgress: timing.scheduledProgress,
                 remainingToStart: timing.remainingToStart,

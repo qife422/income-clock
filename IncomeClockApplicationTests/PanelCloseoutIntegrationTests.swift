@@ -98,8 +98,8 @@ final class PanelCloseoutIntegrationTests: XCTestCase {
         // First pair is the exact Contract carry. Second pair crosses the
         // six-digit boundary at the legal maximum wage using real calculations.
         let cases: [(wage: Int64, before: Int64, after: Int64, expectedBefore: String, expectedAfter: String)] = [
-            (3_240_000, 999_999, 1_000_000, "¥999.999", "¥1,000.000"),
-            (99_999_999, 3_240_000, 3_240_001, "¥99,999.999", "¥100,000.030")
+            (3_240_000, 999_999, 1_000_000, "¥999.9990", "¥1,000.0000"),
+            (99_999_999, 3_240_000, 3_240_001, "¥99,999.9990", "¥100,000.0299")
         ]
         for themeID in [BuiltinThemeID.warmIsland, BuiltinThemeID.windowCompanion] {
             for sample in cases {
@@ -196,11 +196,11 @@ final class PanelCloseoutIntegrationTests: XCTestCase {
         window.orderFrontRegardless()
         defer { pulse.setVisible(false); window.orderOut(nil); window.close() }
         try await Stage9EnableHostedAccessibility()
-        try await eventually { self.nativeAmount(in: host)?.targetText == "¥999.999" }
+        try await eventually { self.nativeAmount(in: host)?.targetText == "¥999.9990" }
         let amount = try XCTUnwrap(nativeAmount(in: host))
         clock.set(.init(rawValue: start.rawValue + 1_000_000))
         await store.refresh()
-        try await eventually { amount.targetText == "¥1,000.000" && amount.activeAnimationCount > 0 }
+        try await eventually { amount.targetText == "¥1,000.0000" && amount.activeAnimationCount > 0 }
         // No suspension or capture between this production animation witness and
         // invoking the actual mounted action: the click occurs while it rolls.
         let action = try element(label: "打卡下班", in: host, buttonOnly: true)
@@ -246,7 +246,7 @@ final class PanelCloseoutIntegrationTests: XCTestCase {
         window.orderFrontRegardless()
         try await Stage9EnableHostedAccessibility()
         defer { pulse.setVisible(false); window.orderOut(nil); window.close() }
-        try await eventually { self.nativeAmount(in: host)?.targetText == "¥10.000" }
+        try await eventually { self.nativeAmount(in: host)?.targetText == "¥10.0000" }
         XCTAssertTrue(press(try element(label: "打卡下班", in: host, buttonOnly: true)))
         try await eventually { self.renderedText(host).contains("预计结算 ¥10.00") }
         try await eventually { layout.frames["confirm"] != nil && layout.frames["decoration"] == nil }
@@ -292,7 +292,7 @@ final class PanelCloseoutIntegrationTests: XCTestCase {
         XCTAssertTrue(press(try element(label: "取消", in: host, buttonOnly: true)))
         try await eventually { store.confirmation == nil && self.nativeAmount(in: host) != nil }
         clock.set(.init(rawValue: start.rawValue + 30_000))
-        try await eventually { self.nativeAmount(in: host)?.targetText == "¥30.000" }
+        try await eventually { self.nativeAmount(in: host)?.targetText == "¥30.0000" }
         XCTAssertEqual(store.viewState?.state, .earning)
         let afterCancel = await repository.currentToday()
         XCTAssertEqual(afterCancel, today)
@@ -445,8 +445,8 @@ final class PanelCloseoutIntegrationTests: XCTestCase {
         let rows: [(WorkdayState, Int, String, String, String?)] = [
             (.unconfigured, 8, "待完成设置", "请先设置工资与工作时间", nil),
             (.ready, 8, "今日未打卡", "今日已获得 ¥0.00", "打卡上班"),
-            (.clockedInWaiting, 8, "已打卡 · 等待开工", "今日已获得 ¥0.000 · 距离开始 01:00:00", "打卡下班"),
-            (.earning, 12, "计薪中", "今日已获得 ¥300.000 · 距离下班 06:00:00", "打卡下班"),
+            (.clockedInWaiting, 8, "已打卡 · 等待开工", "今日已获得 ¥0.0000 · 距离开始 01:00:00", "打卡下班"),
+            (.earning, 12, "计薪中", "今日已获得 ¥300.0000 · 距离下班 06:00:00", "打卡下班"),
             (.awaitingClockOut, 18, "计薪已停止", "今日已获得 ¥900.00 · 请打卡下班", "打卡下班"),
             (.completed, 18, "今日已完成", "最终收入 ¥900.00", nil),
             (.recoveryRequired, 12, "记录需要恢复", "无法安全显示今日收入", nil)

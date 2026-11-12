@@ -661,3 +661,18 @@ Final integrity locator: DEVELOPMENT_STATE.md §156；R/Metadata/MenuRemainingCl
 
 
 Final Runner restoration integrity locator — DEVELOPMENT_STATE.md §159：support报告 /private/tmp/visual-income-check-in/stage9-closeout/run-20260907-001/Metadata/MenuRemainingRunnerRestoration/STAGE9_MENU_REMAINING_RUNNER_RESTORATION_FINAL_INTEGRITY_REVIEW.json 实际存在，12086B SHA56ee8a34727f163d8dffca3db18a18cf5c6794d1a7366d7283c4852b66c5fc06 completed/READY仅封存与三文档完整性；23-file packet冻结，报告不加入packet。报告的docs指纹是此次locator delta之前的实际复核输入，出生pending记录不改写。support21files/309984logicalB，combined10360files/phase余188；resume_checkpoint已推进§159及真实CHECKPOINT。当前nativeUNVERIFIED/oldM7profileunavailable，三记录后续技术提案READY但staticprepare/+512amendment仍UNAPPLIED_NOT_AUTHORIZED，native另需freshhands-offgrant。Stage9NOT_READY/PASS0/X006.aDEFERRED-UNVERIFIED/humanPENDING/deployNOT_AUTHORIZED，所有caps/baselines/warning不变。仅locator delta只读确认，no新报告/no封存修改。
+
+
+### 实时估算精度候选
+
+固定候选见 [2026-11-12-live-precision](contract_snapshots/2026-11-12-live-precision/SHA256SUMS)。当前授权、测试暂停及证据适用范围见 DEVELOPMENT_STATE.md §161。
+
+
+### 面板布局候选
+
+固定候选见 [2026-11-12-panel-layout](contract_snapshots/2026-11-12-panel-layout/SHA256SUMS)。用户授权和当前交付范围见 DEVELOPMENT_STATE.md §163。
+
+
+### 暖屿本机配色候选
+
+固定候选见 [2026-11-12-warm-island](contract_snapshots/2026-11-12-warm-island/SHA256SUMS)。本机更新范围与实际结果见 DEVELOPMENT_STATE.md §164。

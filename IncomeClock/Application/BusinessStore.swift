@@ -808,7 +808,7 @@ final class BusinessStore: ObservableObject {
     ) throws -> BusinessViewState {
         let settingsDamageActive = settingsAreDamaged ?? (settingsDamage != nil)
         try beforeAmountAndTimeDerivation?()
-        let zeroLive = try LiveEarnedMilliYuan(validating: 0)
+        let zeroLive = try LiveEarnedTenThousandths(validating: 0)
         let zeroRounded = try RoundedEarnedCents(validating: 0)
         let calculation = try earningsCalculation(today: snapshot.today,
             at: snapshot.now,
@@ -818,7 +818,7 @@ final class BusinessStore: ObservableObject {
         switch snapshot.result.state {
         case .unconfigured, .ready: amount = .rounded(zeroRounded)
         case .clockedInWaiting: amount = .live(zeroLive)
-        case .earning: amount = .live(calculation?.liveEarnedMilliYuan ?? zeroLive)
+        case .earning: amount = .live(calculation?.liveEarnedTenThousandths ?? zeroLive)
         case .awaitingClockOut, .completed: amount = .rounded(calculation?.roundedEarnedCents ?? zeroRounded)
         case .recoveryRequired: amount = .hidden
         }

@@ -15,7 +15,7 @@ final class EarningsCalculatorTests: XCTestCase {
 
         XCTAssertEqual(result.effectiveStartAt, DomainTestFixtures.timestamp(9))
         XCTAssertEqual(result.earnedDuration, .zero)
-        XCTAssertEqual(result.liveEarnedMilliYuan.rawValue, 0)
+        XCTAssertEqual(result.liveEarnedTenThousandths.rawValue, 0)
         XCTAssertEqual(result.roundedEarnedCents.rawValue, 0)
         XCTAssertEqual(result.scheduledProgress, 0)
         XCTAssertEqual(result.remainingToStart.rawValue, 30 * 60_000)
@@ -33,7 +33,7 @@ final class EarningsCalculatorTests: XCTestCase {
         )
 
         XCTAssertEqual(result.earnedDuration.rawValue, 9 * DomainTestFixtures.hour)
-        XCTAssertEqual(result.liveEarnedMilliYuan.rawValue, 300_000)
+        XCTAssertEqual(result.liveEarnedTenThousandths.rawValue, 3_000_000)
         XCTAssertEqual(result.roundedEarnedCents.rawValue, 30_000)
         XCTAssertEqual(result.scheduledProgress, 1)
         XCTAssertEqual(result.remainingToEnd, .zero)
@@ -51,7 +51,7 @@ final class EarningsCalculatorTests: XCTestCase {
         )
 
         XCTAssertEqual(result.earnedDuration.rawValue, 8 * DomainTestFixtures.hour)
-        XCTAssertEqual(result.liveEarnedMilliYuan.rawValue, 266_667)
+        XCTAssertEqual(result.liveEarnedTenThousandths.rawValue, 2_666_667)
         XCTAssertEqual(result.roundedEarnedCents.rawValue, 26_667)
         XCTAssertEqual(result.exactEarnedCents.numerator, 30_000 * 8 * DomainTestFixtures.hour)
         XCTAssertEqual(result.exactEarnedCents.denominator, 9 * DomainTestFixtures.hour)
@@ -115,7 +115,7 @@ final class EarningsCalculatorTests: XCTestCase {
         )
 
         XCTAssertEqual(result.earnedDuration, .zero)
-        XCTAssertEqual(result.liveEarnedMilliYuan.rawValue, 0)
+        XCTAssertEqual(result.liveEarnedTenThousandths.rawValue, 0)
         XCTAssertEqual(result.roundedEarnedCents.rawValue, 0)
     }
 
@@ -123,7 +123,7 @@ final class EarningsCalculatorTests: XCTestCase {
         let settings = try DomainTestFixtures.settings(
             wageCents: 1,
             startMilliseconds: 1_000,
-            endMilliseconds: 1_020
+            endMilliseconds: 1_200
         )
         let result = try EarningsCalculator.calculate(
             EarningsCalculationInput(
@@ -134,16 +134,16 @@ final class EarningsCalculatorTests: XCTestCase {
             )
         )
 
-        XCTAssertEqual(result.liveEarnedMilliYuan.rawValue, 1)
+        XCTAssertEqual(result.liveEarnedTenThousandths.rawValue, 1)
         XCTAssertEqual(result.roundedEarnedCents.rawValue, 0)
-        XCTAssertEqual(result.exactEarnedCents, try RationalCents(numerator: 1, denominator: 20))
+        XCTAssertEqual(result.exactEarnedCents, try RationalCents(numerator: 1, denominator: 200))
     }
 
     func testLiveHalfUpBelowBoundaryDoesNotRound() throws {
         let settings = try DomainTestFixtures.settings(
             wageCents: 1,
             startMilliseconds: 1_000,
-            endMilliseconds: 1_021
+            endMilliseconds: 1_201
         )
         let result = try EarningsCalculator.calculate(
             EarningsCalculationInput(
@@ -154,7 +154,7 @@ final class EarningsCalculatorTests: XCTestCase {
             )
         )
 
-        XCTAssertEqual(result.liveEarnedMilliYuan.rawValue, 0)
+        XCTAssertEqual(result.liveEarnedTenThousandths.rawValue, 0)
         XCTAssertEqual(result.roundedEarnedCents.rawValue, 0)
     }
 
@@ -189,7 +189,7 @@ final class EarningsCalculatorTests: XCTestCase {
         )
 
         XCTAssertEqual(result.roundedEarnedCents.rawValue, 99_999_999)
-        XCTAssertEqual(result.liveEarnedMilliYuan.rawValue, 999_999_990)
+        XCTAssertEqual(result.liveEarnedTenThousandths.rawValue, 9_999_999_900)
     }
 
     func testLegalBoundaryInputFailsClosedWhenInternalMultiplicationOverflows() throws {

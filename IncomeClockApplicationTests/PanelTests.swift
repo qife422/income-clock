@@ -1000,8 +1000,8 @@ final class Stage5PresentationTests: XCTestCase {
         let cases: [(WorkdayState, String, String?, Stage5PanelPresentation.Action)] = [
             (.unconfigured, "待完成设置", "¥0.00", .openSettings),
             (.ready, "今日未打卡", "¥0.00", .clockIn(enabled: true)),
-            (.clockedInWaiting, "已打卡 · 等待开工", "¥0.000", .clockOut),
-            (.earning, "计薪中", "¥123.456", .clockOut),
+            (.clockedInWaiting, "已打卡 · 等待开工", "¥0.0000", .clockOut),
+            (.earning, "计薪中", "¥123.4567", .clockOut),
             (.awaitingClockOut, "计薪已停止", "¥123.46", .clockOut),
             (.completed, "今日已完成", "¥123.46", .none),
             (.recoveryRequired, "记录需要恢复", nil, .resetToday)
@@ -1167,12 +1167,12 @@ final class Stage5PresentationTests: XCTestCase {
     }
 
     func testAmountFormattingHandlesCarryBoundariesAndNeverDropsBelowTwentySixPoints() {
-        XCTAssertEqual(Stage5AmountFormatter.string(minorUnits: 999_999, fractionDigits: 3), "¥999.999")
-        XCTAssertEqual(Stage5AmountFormatter.string(minorUnits: 1_000_000, fractionDigits: 3), "¥1,000.000")
-        XCTAssertEqual(Stage5AmountFormatter.string(minorUnits: 12_009, fractionDigits: 3), "¥12.009")
-        XCTAssertEqual(Stage5AmountFormatter.string(minorUnits: 12_010, fractionDigits: 3), "¥12.010")
-        XCTAssertEqual(Stage5AmountFormatter.string(minorUnits: 99_999, fractionDigits: 3), "¥99.999")
-        XCTAssertEqual(Stage5AmountFormatter.string(minorUnits: 100_000, fractionDigits: 3), "¥100.000")
+        XCTAssertEqual(Stage5AmountFormatter.string(minorUnits: 9_999_990, fractionDigits: 4), "¥999.9990")
+        XCTAssertEqual(Stage5AmountFormatter.string(minorUnits: 10_000_000, fractionDigits: 4), "¥1,000.0000")
+        XCTAssertEqual(Stage5AmountFormatter.string(minorUnits: 120_090, fractionDigits: 4), "¥12.0090")
+        XCTAssertEqual(Stage5AmountFormatter.string(minorUnits: 120_100, fractionDigits: 4), "¥12.0100")
+        XCTAssertEqual(Stage5AmountFormatter.string(minorUnits: 999_990, fractionDigits: 4), "¥99.9990")
+        XCTAssertEqual(Stage5AmountFormatter.string(minorUnits: 1_000_000, fractionDigits: 4), "¥100.0000")
         XCTAssertGreaterThanOrEqual(Stage5AmountFormatter.fontSize(for: "¥999,999.99"), 26)
         XCTAssertGreaterThanOrEqual(Stage5AmountFormatter.fontSize(for: "¥999,999,999.99"), 26)
     }
@@ -1181,19 +1181,19 @@ final class Stage5PresentationTests: XCTestCase {
         let font = Stage5AmountFormatter.measuredFont(size: 34)
         for themeID in [BuiltinThemeID.warmIsland, BuiltinThemeID.windowCompanion] {
             let preset = PanelOdometerPreset.resolve(themeID: themeID)
-            for pair: (Int64, Int64) in [(12_009, 12_010), (12_099, 12_100), (99_999, 100_000), (999_999, 1_000_000)] {
+            for pair: (Int64, Int64) in [(120_099, 120_100), (120_999, 121_000), (999_999, 1_000_000), (9_999_999, 10_000_000)] {
                 let native = PanelAmountNativeView(frame: CGRect(x: 0, y: 0, width: 280, height: 35))
                 native.apply(amount: .live(try .init(validating: pair.0)), font: font, color: .black,
                              preset: preset, motionEnabled: true, calibration: 0, height: 35)
                 native.apply(amount: .live(try .init(validating: pair.1)), font: font, color: .black,
                              preset: preset, motionEnabled: true, calibration: 0, height: 35)
-                XCTAssertEqual(native.targetText, Stage5AmountFormatter.string(minorUnits: pair.1, fractionDigits: 3))
+                XCTAssertEqual(native.targetText, Stage5AmountFormatter.string(minorUnits: pair.1, fractionDigits: 4))
                 XCTAssertEqual(native.lastDirection, 1)
                 XCTAssertEqual(native.lastDuration, themeID == BuiltinThemeID.warmIsland ? 0.160 : 0.180)
                 XCTAssertLessThanOrEqual(native.lastDuration, 0.220)
                 XCTAssertEqual(preset.staggerMilliseconds, 0)
                 XCTAssertEqual(native.renderedGlyphs.first { $0.key == "fraction-0" }?.frame.minX, 166)
-                let incoming = try XCTUnwrap(native.incomingAnimation(for: "fraction-3"))
+                let incoming = try XCTUnwrap(native.incomingAnimation(for: "fraction-4"))
                 XCTAssertEqual(incoming.duration, preset.duration)
                 let from = try XCTUnwrap(incoming.fromValue as? NSNumber).doubleValue
                 let to = try XCTUnwrap(incoming.toValue as? NSNumber).doubleValue
@@ -1210,7 +1210,7 @@ final class Stage5PresentationTests: XCTestCase {
                 native.apply(amount: .live(try .init(validating: pair.0)), font: font, color: .black,
                              preset: preset, motionEnabled: true, calibration: 0, height: 35)
                 XCTAssertEqual(native.lastDirection, -1)
-                let downward = try XCTUnwrap(native.incomingAnimation(for: "fraction-3"))
+                let downward = try XCTUnwrap(native.incomingAnimation(for: "fraction-4"))
                 XCTAssertGreaterThan(try XCTUnwrap(downward.fromValue as? NSNumber).doubleValue,
                                      try XCTUnwrap(downward.toValue as? NSNumber).doubleValue)
             }
@@ -1234,10 +1234,10 @@ final class Stage5PresentationTests: XCTestCase {
         try apply(12_010, motion: false)
         XCTAssertEqual(native.activeAnimationCount, 0)
         try apply(12_011, motion: false)
-        XCTAssertEqual(native.targetText, "¥12.011")
+        XCTAssertEqual(native.targetText, "¥1.2011")
         XCTAssertEqual(native.activeAnimationCount, 0)
         try apply(18_999, calibration: 1)
-        XCTAssertEqual(native.targetText, "¥18.999")
+        XCTAssertEqual(native.targetText, "¥1.8999")
         XCTAssertEqual(native.activeAnimationCount, 0, "Resume must replace the target without replay")
         try apply(19_000, calibration: 1)
         XCTAssertGreaterThan(native.activeAnimationCount, 0)
@@ -1272,7 +1272,7 @@ final class Stage5PresentationTests: XCTestCase {
                 XCTAssertEqual(result, .committed)
             }
             XCTAssertEqual(store.viewState?.state, settled ? .completed : .earning)
-            let expectedText = settled ? "¥999,999.99" : "¥0.000"
+            let expectedText = settled ? "¥999,999.99" : "¥0.0000"
             XCTAssertEqual(Stage5AmountFormatter.string(for: try XCTUnwrap(store.viewState).amount), expectedText)
             for themeID in [BuiltinThemeID.warmIsland, BuiltinThemeID.windowCompanion] {
                 await themes.selectTheme(id: themeID)
@@ -1479,7 +1479,7 @@ final class Stage5PresentationTests: XCTestCase {
         // can consume the changed authoritative clock in this part of the test.
         clock.resetSampleCount()
         clock.set(.init(rawValue: start.rawValue + 1_000))
-        try await waitUntil { Stage5AmountFormatter.string(for: store.viewState!.amount) == "¥30.864" }
+        try await waitUntil { Stage5AmountFormatter.string(for: store.viewState!.amount) == "¥30.8642" }
         XCTAssertGreaterThan(clock.sampleCount, 0)
         pulse.setVisible(false)
         window.orderOut(nil)
@@ -1488,12 +1488,12 @@ final class Stage5PresentationTests: XCTestCase {
         clock.set(.init(rawValue: start.rawValue + 2_000))
         try await Task.sleep(nanoseconds: 100_000_000)
         XCTAssertEqual(clock.sampleCount, 0)
-        XCTAssertEqual(Stage5AmountFormatter.string(for: try XCTUnwrap(store.viewState).amount), "¥30.864")
+        XCTAssertEqual(Stage5AmountFormatter.string(for: try XCTUnwrap(store.viewState).amount), "¥30.8642")
         window.orderFrontRegardless()
         pulse.setVisible(true)
-        try await waitUntil { Stage5AmountFormatter.string(for: store.viewState!.amount) == "¥61.728" }
+        try await waitUntil { Stage5AmountFormatter.string(for: store.viewState!.amount) == "¥61.7284" }
         clock.set(.init(rawValue: ApplicationTestSupport.timestamp(hour: 18).rawValue - 1))
-        try await waitUntil { Stage5AmountFormatter.string(for: store.viewState!.amount) == "¥999,999.959" }
+        try await waitUntil { Stage5AmountFormatter.string(for: store.viewState!.amount) == "¥999,999.9591" }
         host.layoutSubtreeIfNeeded()
         let representation = try XCTUnwrap(host.bitmapImageRepForCachingDisplay(in: host.bounds))
         host.cacheDisplay(in: host.bounds, to: representation)
@@ -1526,10 +1526,10 @@ final class Stage5PresentationTests: XCTestCase {
             }
             outputs.append(try XCTUnwrap(Stage5AmountFormatter.string(for: XCTUnwrap(store.viewState).amount)))
         }
-        XCTAssertEqual(outputs, ["¥0.009", "¥0.009", "¥0.009"])
+        XCTAssertEqual(outputs, ["¥0.0093", "¥0.0093", "¥0.0093"])
     }
 
-    func testNativePulseChangesOnlyAtRealMilliYuanBoundaryAndResumesAtCurrentTarget() async throws {
+    func testNativePulseChangesOnlyAtRealTenThousandthBoundaryAndResumesAtCurrentTarget() async throws {
         let start = ApplicationTestSupport.timestamp(hour: 9)
         let settings = ApplicationTestSupport.committedSettings()
         let today = try BusinessWorkdayCalendar(timeZoneIdentifier: ApplicationTestSupport.timeZoneIdentifier)
@@ -1540,21 +1540,21 @@ final class Stage5PresentationTests: XCTestCase {
             nowProvider: clock, timeZoneIdentifier: ApplicationTestSupport.timeZoneIdentifier)
         await store.restore()
         let pulse = PanelRenderPulseCoordinator()
-        for offset in [0, 1, 20, 53] {
+        for offset in [0, 1, 4, 5] {
             clock.set(.init(rawValue: start.rawValue + Int64(offset)))
             await pulse.pulse(store)
-            XCTAssertEqual(Stage5AmountFormatter.string(for: try XCTUnwrap(store.viewState).amount), "¥0.000")
+            XCTAssertEqual(Stage5AmountFormatter.string(for: try XCTUnwrap(store.viewState).amount), "¥0.0000")
         }
-        clock.set(.init(rawValue: start.rawValue + 54))
+        clock.set(.init(rawValue: start.rawValue + 6))
         await pulse.pulse(store)
-        XCTAssertEqual(Stage5AmountFormatter.string(for: try XCTUnwrap(store.viewState).amount), "¥0.001")
+        XCTAssertEqual(Stage5AmountFormatter.string(for: try XCTUnwrap(store.viewState).amount), "¥0.0001")
         pulse.setVisible(false)
         clock.set(.init(rawValue: start.rawValue + 600_000))
         await pulse.pulse(store)
-        XCTAssertEqual(Stage5AmountFormatter.string(for: try XCTUnwrap(store.viewState).amount), "¥0.001")
+        XCTAssertEqual(Stage5AmountFormatter.string(for: try XCTUnwrap(store.viewState).amount), "¥0.0001")
         pulse.setVisible(true)
         await pulse.pulse(store)
-        XCTAssertEqual(Stage5AmountFormatter.string(for: try XCTUnwrap(store.viewState).amount), "¥5.556")
+        XCTAssertEqual(Stage5AmountFormatter.string(for: try XCTUnwrap(store.viewState).amount), "¥5.5556")
         clock.set(ApplicationTestSupport.timestamp(hour: 18))
         await pulse.pulse(store)
         XCTAssertEqual(store.viewState?.state, .awaitingClockOut)
@@ -1568,7 +1568,7 @@ final class Stage5PresentationTests: XCTestCase {
         for scale: CGFloat in [1, 1.1, 1.2] {
             for design: Font.Design in [.default, .rounded] {
                 for weight: Font.Weight in [.medium, .semibold, .bold] {
-                    for text in ["¥999.999", "¥1,000.000", "¥99,999.999", "¥100,000.000", "¥999,999.990"] {
+                    for text in ["¥999.9990", "¥1,000.0000", "¥99,999.9990", "¥100,000.0000", "¥999,999.9900"] {
                         let height = Stage5AmountFormatter.amountHeight(textScale: scale)
                         let selected = Stage5AmountFormatter.fontSize(for: text, weight: weight, design: design, textScale: scale)
                         let independentlyFitting = tiers.filter { candidate in
@@ -1621,7 +1621,7 @@ final class Stage5PresentationTests: XCTestCase {
     func testAmountUsesMeasuredDiscreteFontAtBothCarryBoundariesAndMaximumWage() {
         for design: Font.Design in [.default, .rounded] {
             for weight: Font.Weight in [.medium, .semibold, .bold] {
-                for amount in ["¥999.999", "¥1,000.000", "¥99,999.999", "¥100,000.000", "¥999,999.990"] {
+                for amount in ["¥999.9990", "¥1,000.0000", "¥99,999.9990", "¥100,000.0000", "¥999,999.9900"] {
                     let size = Stage5AmountFormatter.fontSize(for: amount, weight: weight, design: design)
                     XCTAssertTrue([CGFloat(34), 32, 30, 28, 26].contains(size))
                     let font = Stage5AmountFormatter.measuredFont(size: size, weight: weight, design: design)
@@ -1633,15 +1633,15 @@ final class Stage5PresentationTests: XCTestCase {
                 }
             }
         }
-        XCTAssertEqual(Stage5AmountFormatter.fontSize(for: "¥999.999"), 34)
-        XCTAssertEqual(Stage5AmountFormatter.fontSize(for: "¥1,000.000"), 34)
-        XCTAssertEqual(Stage5AmountFormatter.fontSize(for: "¥100,000.000"),
-                       Stage5AmountFormatter.fontSize(for: "¥999,999.990"))
+        XCTAssertEqual(Stage5AmountFormatter.fontSize(for: "¥999.9990"), 34)
+        XCTAssertEqual(Stage5AmountFormatter.fontSize(for: "¥1,000.0000"), 34)
+        XCTAssertEqual(Stage5AmountFormatter.fontSize(for: "¥100,000.0000"),
+                       Stage5AmountFormatter.fontSize(for: "¥999,999.9900"))
     }
 
     func testDurationAndVoiceOverValuesPreserveLiveVersusSettledSemantics() throws {
         XCTAssertEqual(Stage5DurationFormatter.string(try .init(validating: 13_638_000)), "03:47:18")
-        let live = BusinessEarnedAmount.live(try .init(validating: 123_456))
+        let live = BusinessEarnedAmount.live(try .init(validating: 1_234_567))
         let settled = BusinessEarnedAmount.rounded(try .init(validating: 12_346))
         XCTAssertTrue(Stage5AmountFormatter.accessibilityValue(for: live).contains("实时收入估算"))
         XCTAssertTrue(Stage5AmountFormatter.accessibilityValue(for: settled).contains("已结算"))
@@ -1778,7 +1778,7 @@ final class Stage5PresentationTests: XCTestCase {
         switch state {
         case .unconfigured, .ready: amount = .rounded(try .init(validating: 0))
         case .clockedInWaiting: amount = .live(try .init(validating: 0))
-        case .earning: amount = .live(try .init(validating: 123_456))
+        case .earning: amount = .live(try .init(validating: 1_234_567))
         case .awaitingClockOut, .completed: amount = .rounded(try .init(validating: 12_346))
         case .recoveryRequired: amount = .hidden
         }
@@ -2451,8 +2451,8 @@ final class NativeMenuSummaryContrastTests: XCTestCase {
 
     func testFirstOpenEarningDetailAcceptsOnlyCanonicalDynamicDriftAndDisplaysNativeTitle() throws {
         let target = Target()
-        let sampled = "今日已获得 ¥999,999.980 · 距离下班 06:00:00"
-        let rendered = "今日已获得 ¥999,999.990 · 距离下班 05:59:58"
+        let sampled = "今日已获得 ¥999,999.9800 · 距离下班 06:00:00"
+        let rendered = "今日已获得 ¥999,999.9900 · 距离下班 05:59:58"
         for warning in [nil, "设置需要修复"] as [String?] {
             let menu = earningFixture(target, detail: rendered, warning: warning)
             let expected = earningFingerprint(detail: sampled, warning: warning)
@@ -2470,8 +2470,8 @@ final class NativeMenuSummaryContrastTests: XCTestCase {
 
     func testDynamicDetailDoesNotBroadenLegacyColorOnlyMatching() {
         let target = Target()
-        let rendered = "今日已获得 ¥999,999.990 · 距离下班 05:59:58"
-        let sampled = "今日已获得 ¥999,999.980 · 距离下班 06:00:00"
+        let rendered = "今日已获得 ¥999,999.9900 · 距离下班 05:59:58"
+        let sampled = "今日已获得 ¥999,999.9800 · 距离下班 06:00:00"
         let menu = earningFixture(target, detail: rendered)
         let before = menu.items[0].attributedTitle
         XCTAssertEqual(NativeMenuSummaryContrast.apply(to: menu,
@@ -2483,9 +2483,9 @@ final class NativeMenuSummaryContrastTests: XCTestCase {
     func testDynamicDetailUpdatesExistingRowFromActualMenuTitle() throws {
         let center = NotificationCenter()
         let target = Target()
-        let first = "今日已获得 ¥999,999.980 · 距离下班 06:00:00"
-        let second = "今日已获得 ¥999,999.990 · 距离下班 05:59:58"
-        let third = "今日已获得 ¥1,000,000.001 · 距离下班 05:59:57"
+        let first = "今日已获得 ¥999,999.9800 · 距离下班 06:00:00"
+        let second = "今日已获得 ¥999,999.9900 · 距离下班 05:59:58"
+        let third = "今日已获得 ¥1,000,000.0010 · 距离下班 05:59:57"
         let menu = earningFixture(target, detail: second)
         let bridge = NativeMenuSummaryContrast(center: center) { [self] in earningFingerprint(detail: first) }
         bridge.start()
@@ -2506,13 +2506,13 @@ final class NativeMenuSummaryContrastTests: XCTestCase {
 
     func testDynamicDetailRejectsMalformedOrCrossStateWithoutPartialMutation() {
         let target = Target()
-        let sampled = "今日已获得 ¥999,999.980 · 距离下班 06:00:00"
-        let invalid = ["今日已获得 ¥0999,999.990 · 距离下班 05:59:58",
-                       "今日已获得 ¥99999.990 · 距离下班 05:59:58",
+        let sampled = "今日已获得 ¥999,999.9800 · 距离下班 06:00:00"
+        let invalid = ["今日已获得 ¥0999,999.9900 · 距离下班 05:59:58",
+                       "今日已获得 ¥99999.9900 · 距离下班 05:59:58",
                        "今日已获得 ¥999,999.99 · 距离下班 05:59:58",
-                       "今日已获得 ¥999,999.990 · 距离下班 05:60:58",
-                       "今日已获得 ¥999,999.990 · 距离下班 05:59:58\n",
-                       "今日已获得 ¥999,999.990 · 距离下班 05:59:58…",
+                       "今日已获得 ¥999,999.9900 · 距离下班 05:60:58",
+                       "今日已获得 ¥999,999.9900 · 距离下班 05:59:58\n",
+                       "今日已获得 ¥999,999.9900 · 距离下班 05:59:58…",
                        "今日已获得 ¥-999,999.990 · 距离下班 05:59:58"]
         for rendered in invalid {
             let menu = earningFixture(target, detail: rendered)
@@ -2521,11 +2521,11 @@ final class NativeMenuSummaryContrastTests: XCTestCase {
                 rendered)
             XCTAssertTrue(menu.items.prefix(2).allSatisfy { $0.view == nil })
         }
-        let rendered = "今日已获得 ¥999,999.990 · 距离下班 05:59:58"
+        let rendered = "今日已获得 ¥999,999.9900 · 距离下班 05:59:58"
         let menu = earningFixture(target, detail: rendered)
         let wrongStates = [NativeMenuSummaryContrast.Fingerprint(summary: ["已打卡 · 等待开工", sampled],
             panelTitle: expected.panelTitle, businessTitle: "打卡下班", loginStatusTitle: nil),
-            earningFingerprint(detail: "今日已获得 ¥999,999.980 · 距离开始 06:00:00")]
+            earningFingerprint(detail: "今日已获得 ¥999,999.9800 · 距离开始 06:00:00")]
         for wrong in wrongStates {
             XCTAssertEqual(NativeMenuSummaryContrast.apply(to: menu, matching: wrong,
                 informationalRows: true), 0)
@@ -2632,7 +2632,7 @@ final class NativeMenuSummaryContrastTests: XCTestCase {
         XCTAssertEqual(providerCalls, 2)
         XCTAssertTrue(menu.items[0].view === first)
         XCTAssertTrue(menu.items[1].view === second)
-        let updatedTitle = "今日已获得 ¥123456789.123 · 距离下班 08:00:00"
+        let updatedTitle = "今日已获得 ¥123456789.1230 · 距离下班 08:00:00"
         menu.items[1].title = updatedTitle
         menu.items[1].attributedTitle = nil
         current = .init(summary: [expected.summary[0], updatedTitle],
@@ -2719,7 +2719,7 @@ final class NativeMenuSummaryContrastTests: XCTestCase {
         XCTAssertNil(warning.action)
         let row = try XCTUnwrap(menu.items[1].view as? NativeMenuInformationRow)
         let originalWidth = row.frame.width
-        let updatedTitle = "今日已获得 ¥123456789.123 · 距离下班 08:00:00"
+        let updatedTitle = "今日已获得 ¥123456789.1230 · 距离下班 08:00:00"
         menu.items[1].title = updatedTitle
         menu.items[1].attributedTitle = NSAttributedString(string: updatedTitle)
         // Stale fingerprints must not replace visible informational content.
@@ -2805,7 +2805,7 @@ final class NativeMenuSummaryContrastTests: XCTestCase {
     }
 
     func testInformationalRowArchiveCopyKeepsOneStaticLabelAndNativeFont() throws {
-        let row = NativeMenuInformationRow(title: "今日已获得 ¥123.456", font: NSFont.menuFont(ofSize: 0))
+        let row = NativeMenuInformationRow(title: "今日已获得 ¥123.4567", font: NSFont.menuFont(ofSize: 0))
         let bytes = try NSKeyedArchiver.archivedData(withRootObject: row, requiringSecureCoding: false)
         let copy = try XCTUnwrap(NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(bytes) as? NativeMenuInformationRow)
         XCTAssertEqual(copy.subviews.count, 1)

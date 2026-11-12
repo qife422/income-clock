@@ -142,26 +142,26 @@ struct ValidatedTheme: Equatable, Sendable, Identifiable {
             decorationOpacity: 0
         ),
         light: .init(
-            background: "#F6F1E7", backgroundOpacity: 0.96, raised: "#FFFDF8",
+            background: "#FAF6EE", backgroundOpacity: 1.0, raised: "#FFFCF5",
             primaryText: "#292823", secondaryText: "#66635B", tertiaryText: "#716E66",
-            accent: "#748962", accentHover: "#687C58", accentPressed: "#5E714F",
+            accent: "#526B49", accentHover: "#485F40", accentPressed: "#3E5237",
             start: "#A85D43", stop: "#5F754C", actionText: "#FFFFFF",
-            border: "#29282324", progressTrack: "#2928231F", progressFill: "#748962",
+            border: "#29282324", progressTrack: "#2928231F", progressFill: "#526B49",
             statusReady: "#73736D", statusWaiting: "#B68135", statusEarning: "#5F8A58",
             statusAwaiting: "#B97822", statusCompleted: "#5F8A58", statusError: "#B84234",
-            focusRing: "#3978D4", shadowColor: "#000000", shadowY: 6,
-            shadowBlur: 20, shadowOpacity: 0.18
+            focusRing: "#3978D4", shadowColor: "#33291C", shadowY: 6,
+            shadowBlur: 16, shadowOpacity: 0.16
         ),
         dark: .init(
-            background: "#262824", backgroundOpacity: 0.97, raised: "#33352F",
+            background: "#242922", backgroundOpacity: 1.0, raised: "#30382D",
             primaryText: "#F5F1E8", secondaryText: "#C2BDB2", tertiaryText: "#A6A197",
             accent: "#A5B98C", accentHover: "#B3C69B", accentPressed: "#94A97D",
             start: "#D68567", stop: "#94AA7D", actionText: "#171914",
             border: "#FFFFFF29", progressTrack: "#FFFFFF24", progressFill: "#A5B98C",
             statusReady: "#B9B8B1", statusWaiting: "#E0AE5B", statusEarning: "#9DC894",
             statusAwaiting: "#E5AB53", statusCompleted: "#9DC894", statusError: "#F27B69",
-            focusRing: "#74A8F5", shadowColor: "#000000", shadowY: 6,
-            shadowBlur: 22, shadowOpacity: 0.28
+            focusRing: "#74A8F5", shadowColor: "#10120E", shadowY: 6,
+            shadowBlur: 18, shadowOpacity: 0.25
         ),
         decorations: [:],
         previewResource: "warm-island-preview",

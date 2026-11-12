@@ -278,7 +278,7 @@ enum BusinessCommandOutcome: Equatable, Sendable {
 
 enum BusinessEarnedAmount: Equatable, Sendable {
     case hidden
-    case live(LiveEarnedMilliYuan)
+    case live(LiveEarnedTenThousandths)
     case rounded(RoundedEarnedCents)
 }
 

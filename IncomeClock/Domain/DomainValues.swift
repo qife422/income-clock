@@ -47,7 +47,7 @@ struct DailyWageCents: Hashable, Comparable, Sendable {
     }
 }
 
-struct LiveEarnedMilliYuan: Hashable, Comparable, Sendable {
+struct LiveEarnedTenThousandths: Hashable, Comparable, Sendable {
     let rawValue: Int64
 
     init(validating rawValue: Int64) throws {
